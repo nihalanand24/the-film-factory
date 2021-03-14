@@ -1,8 +1,9 @@
 // SimilarMovies
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import languageArray from './languageArray';
 import MovieCard from './MovieCard';
-import ISO6391 from 'iso-639-1';
+// import ISO6391 from 'iso-639-1';
 
 const SimilarMovies = ({ id }) => {
   const [movieSuggestions, setMovieSuggestions] = useState([]);
@@ -28,14 +29,24 @@ const SimilarMovies = ({ id }) => {
                 );
                 // return filteredMovies;
                 filteredMovies.forEach((movie) => {
-                    if (foreignMovieArr.length < 5) {
-                        foreignMovieArr.push(movie);
-                    } 
+                  Promise.resolve(languageArray).then(res => {
+                    res.forEach(lang => {
+                      if (lang.iso_639_1 === movie.original_language) {
+                        if (foreignMovieArr.length < 5) {
+                            foreignMovieArr.push({...movie, language: lang.english_name});
+                        } 
+                      }
+                    })
+                  });
+
                   });
                   //   return foreignMovieArr;
                   if (foreignMovieArr.length === 5 || i === 50) {
                       setMovieSuggestions(foreignMovieArr);
+                      // console.log(foreignMovieArr);
                     }
+
+
                 })
 
       }
@@ -47,9 +58,11 @@ const SimilarMovies = ({ id }) => {
     // setMovieSuggestArr(res.data.results);
   }, [id]);
 
+
   const sayMyName = (movie) => {
     console.log(movie.title, movie.original_language, movie.poster_path)
   }
+
 
   return (
     <>
@@ -57,6 +70,8 @@ const SimilarMovies = ({ id }) => {
 
       {movieSuggestions.length &&
         movieSuggestions.map((movie) => {
+
+
           return (
             // <h3>{movie.title}</h3>
 
@@ -64,7 +79,7 @@ const SimilarMovies = ({ id }) => {
               key={movie.id}
               movie={movie}
               handleClick={() => sayMyName(movie)}>
-              <p>{ISO6391.getName(movie.original_language)}</p>
+              <p>{movie.language}</p>
             </MovieCard>
           );
         })}
