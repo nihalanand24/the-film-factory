@@ -2,10 +2,11 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import MovieCard from './MovieCard';
+import ISO6391 from 'iso-639-1';
 
 const SimilarMovies = ({ id }) => {
 
-    const [movieSuggestArr, setMovieSuggestArr] = useState([]);
+    const [movieSuggestions, setMovieSuggestions] = useState([]);
 
     useEffect(() => {
 
@@ -25,17 +26,20 @@ const SimilarMovies = ({ id }) => {
                     }
                 }).then(res => {
                     const unfilteredMovies = res.data.results;
-                    const filteredMovies = unfilteredMovies.filter(movie => movie.original_language != "en")
+                    const filteredMovies = unfilteredMovies.filter(movie => movie.original_language !== "en")
 
                     return filteredMovies;
                 }).then(movies => {
                     movies.forEach(movie => {
+                        foreignMovieArr.length < 5 &&
                         foreignMovieArr.push(movie);
                     })
-                    console.log(foreignMovieArr)
-                }).then(() => {
-
-                    setMovieSuggestArr(foreignMovieArr)
+                    // console.log(foreignMovieArr);
+                    return foreignMovieArr;
+                }).then(arr => {
+                    if (arr.length === 5 || i === 10) {
+                        setMovieSuggestions(arr)
+                    }
                 })
 
             }
@@ -55,14 +59,15 @@ const SimilarMovies = ({ id }) => {
         <>
             <p>Movies Suggestions</p>
 
-            { movieSuggestArr.length &&
-                movieSuggestArr.map(movie => {
+            { 
+            movieSuggestions.length &&
+                movieSuggestions.map(movie => {
 
                     return (
                         // <h3>{movie.title}</h3>
 
                         <MovieCard key={movie.id}
-                            movie={movie} handleClick={() => console.log(movie.title)} />
+                            movie={movie} handleClick={() => console.log(movie.title, movie.original_language)}><p>{ISO6391.getName(movie.original_language)}</p></MovieCard>
 
                     )
                 })
