@@ -9,26 +9,44 @@ const SimilarMovies = ({ id }) => {
 
     useEffect(() => {
 
+        const foreignMovieArr = [];
 
         if (id) {
-            axios({
-                method: 'GET',
-                url: `https://api.themoviedb.org/3/movie/${id}/similar`,
-                dataResponse: 'JSON',
-                params: {
-                    api_key: '0f71218e40b140c550833011fa9c4afb',
-                    page: 1
-                }
-            }).then(res => {
-                setMovieSuggestArr(res.data.results);
+
+            for (let i = 1; i < 11; i++) {
+
+                axios({
+                    method: 'GET',
+                    url: `https://api.themoviedb.org/3/movie/${id}/similar`,
+                    dataResponse: 'JSON',
+                    params: {
+                        api_key: '0f71218e40b140c550833011fa9c4afb',
+                        page: i
+                    }
+                }).then(res => {
+                    const unfilteredMovies = res.data.results;
+                    const filteredMovies = unfilteredMovies.filter(movie => movie.original_language != "en")
+
+                    return filteredMovies;
+                }).then(movies => {
+                    movies.forEach(movie => {
+                        foreignMovieArr.push(movie);
+                    })
+                    console.log(foreignMovieArr)
+                }).then(() => {
+
+                    setMovieSuggestArr(foreignMovieArr)
+                })
+
+            }
 
 
-
-            })
         }
+        // Filter results for lang != en
+        // Find 4 movies
+        // then push results to tempArray
 
-
-
+        // setMovieSuggestArr(res.data.results);
 
 
     }, [id])
