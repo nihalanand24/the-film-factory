@@ -1,0 +1,11 @@
+
+// movieCard styling
+.movieCard{
+    display: inline-block;
+    margin: 5px;
+    width: 150px;
+    border: 1px solid $purple;
+    img{
+        width: 100%;
+    }
+}
