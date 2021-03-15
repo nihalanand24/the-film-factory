@@ -4,7 +4,7 @@ import MovieSearchResults from './MovieSearchResults';
 import SearchBar from './SearchBar';
 import SimilarMovies from './SimilarMovies';
 
-function Main() {
+function UserSearchMain() {
 
   const [movieId, setMovieId] = useState(null);
   const [movieToSearch, setMovieToSearch] = useState("");
@@ -33,4 +33,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default UserSearchMain;
