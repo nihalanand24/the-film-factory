@@ -1,18 +1,36 @@
-// UserSearchMain.jsx
-// This is the view that shows all user search results in the current search
+import { useState, useEffect } from 'react';
+import '../styles/App.scss'
+import MovieSearchResults from './MovieSearchResults';
+import SearchBar from './SearchBar';
+import SimilarMovies from './SimilarMovies';
 
-const UserSearchMain = () => {
+function Main() {
+
+  const [movieId, setMovieId] = useState(null);
+  const [movieToSearch, setMovieToSearch] = useState("");
+
+  useEffect(() => {
+    movieId &&
+      console.log(movieId);
+  }, [movieId])
+
+  // Handles click events on Nav
+  const handleNavClick = () => {
 
 
+  }
 
-    return (
+  return (
+    <>
 
-        <>
-            <h3>This is the user search page</h3>
-        </>
 
-    )
+      <SearchBar setSearch={setMovieToSearch} />
+      <MovieSearchResults setMovieId={setMovieId} movieToSearch={movieToSearch} />
+      <SimilarMovies id={movieId} />
 
+
+    </>
+  );
 }
 
-export default UserSearchMain;
+export default Main;
