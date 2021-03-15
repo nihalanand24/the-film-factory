@@ -1,39 +1,43 @@
-import { useState, useEffect } from 'react';
+// App.jsx
 import './styles/App.scss'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import HomeMain from './Components/HomeMain';
+// import Main from './Components/UserSearchMain';
+import UserSearchMain from './Components/UserSearchMain';
+import PubResultsMain from './Components/PubResultsMain';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-import MovieSearchResults from './Components/MovieSearchResults';
 import SearchBar from './Components/SearchBar';
-import SimilarMovies from './Components/SimilarMovies';
-
-function App() {
-
-  const [movieId, setMovieId] = useState(null);
-  const [movieToSearch, setMovieToSearch] = useState("");
-
-  useEffect(() => {
-    movieId &&
-      console.log(movieId);
-  }, [movieId])
-
-  // Handles click events on Nav
-  const handleNavClick = () => {
 
 
-  }
+const App = () => {
+    const [movieToSearch, setMovieToSearch] = useState("");
 
-  return (
-    <>
-      <Header />
-      {/* <Main /> */}
-
-      <SearchBar setSearch={setMovieToSearch} />
-      <MovieSearchResults setMovieId={setMovieId} movieToSearch={movieToSearch} />
-      <SimilarMovies id={movieId} />
-
-      <Footer />
-    </>
-  );
+    return (
+        <Router>
+            <>
+                <Header />
+                <Switch>
+                    {/* Route Paths */}
+                    {/* Default page on load = /index */}
+                    <Route exact path="/" render={() => {
+                        return (
+                            <Redirect to="/index" />
+                        )
+                    }} />
+                    <Route path="/index">
+                        <HomeMain setMovieToSearch={setMovieToSearch} />
+                    </Route>
+                    <Route path="/movieSearch">
+                        <UserSearchMain movieToSearch={movieToSearch} />
+                    </Route>
+                    <Route path="/allTimeResults" component={PubResultsMain} />
+                </Switch>
+                <Footer />
+            </>
+        </Router>
+    )
 }
 
 export default App;

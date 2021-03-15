@@ -1,0 +1,14 @@
+// Stores all sass styling for /index 
+
+.welcomeContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 900px;
+
+    h1{
+        font-size: 2rem;
+    }
+}
