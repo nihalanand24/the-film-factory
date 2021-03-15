@@ -8,11 +8,13 @@ const Header = () => {
 
     return (
         <header>
-            <div className="wrapper">
-                <h1>film factory</h1>
+            <div className="wrapper headerProps">
+                <h1>the film factory</h1>
                 <nav>
-                    <h2><a>Current Results</a></h2>
-                    <h2><a>Alltime Results</a></h2>
+                    <ul>
+                        <li><h2><a>current results</a></h2></li>
+                        <li><h2><a>all-time results</a></h2></li>
+                    </ul>
                 </nav>
             </div>
         </header>
