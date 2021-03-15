@@ -15,7 +15,7 @@ const HomeMain = () => {
             <div className="wrapper welcomeContainer">
                 <h1>Welcome to the film factory.</h1>
                 {/* <SearchBar /> */}
-                <h2>recently matched movies:</h2>
+                <h2>search for a movie:</h2>
             </div>
         </main>
 

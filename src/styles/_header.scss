@@ -1,9 +1,4 @@
 // Header.scss
-    header{
-        // height: 300px;
-        // border: 1px solid purple;
-    }
-
     .headerProps{
         // height: 200px;
         // border: 1px solid blue;
@@ -54,10 +49,16 @@
     }
 
     // Class for React to toggle when li (tab) is selected
-    .selectedTab{
-        height: 60px;
-        font-size: 1.2rem;
+    header{
+        .selectedTab{
+            height: 60px;
+            font-size: 1.2rem;
+        }
+            
+
     }
+    
+
 
 
 

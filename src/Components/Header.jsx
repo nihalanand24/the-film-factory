@@ -1,8 +1,9 @@
 // Header.jsx
 // Header Component
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
+
 
     return (
         <header>
@@ -11,8 +12,8 @@ const Header = () => {
                     the film factory</Link></h1>
                 <nav>
                     <ul>
-                        <li><Link to="/movieSearch"><h2><a>current results</a></h2></Link></li>
-                        <li><Link to="/allTimeResults"><h2><a>all-time results</a></h2></Link></li>
+                        <li><NavLink to="/movieSearch" activeClassName="selectedTab" ><h2><a>current results</a></h2></NavLink></li>
+                        <li><NavLink to="/allTimeResults" activeClassName="selectedTab"><h2><a>all-time results</a></h2></NavLink></li>
                     </ul>
                 </nav>
             </div>
