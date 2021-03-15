@@ -8,9 +8,11 @@ import UserSearchMain from './Components/UserSearchMain';
 import PubResultsMain from './Components/PubResultsMain';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import SearchBar from './Components/SearchBar';
 
 
 const App = () => {
+    const [movieToSearch, setMovieToSearch] = useState("");
 
     return (
         <Router>
@@ -24,8 +26,12 @@ const App = () => {
                             <Redirect to="/index" />
                         )
                     }} />
-                    <Route path="/index" component={HomeMain} />
-                    <Route path="/movieSearch" component={UserSearchMain} />
+                    <Route path="/index">
+                        <HomeMain setMovieToSearch={setMovieToSearch} />
+                    </Route>
+                    <Route path="/movieSearch">
+                        <UserSearchMain movieToSearch={movieToSearch} />
+                    </Route>
                     <Route path="/allTimeResults" component={PubResultsMain} />
                 </Switch>
                 <Footer />

@@ -4,18 +4,15 @@
 import SearchBar from './SearchBar';
 
 
-const HomeMain = () => {
-
-
-
+const HomeMain = ({ setMovieToSearch }) => {
 
     return (
 
         <main>
             <div className="wrapper welcomeContainer">
                 <h1>Welcome to the film factory.</h1>
-                {/* <SearchBar /> */}
-                <h2>search for a movie:</h2>
+                {/* <h2>search for a movie:</h2> */}
+                <SearchBar setSearch={setMovieToSearch} />
             </div>
         </main>
 

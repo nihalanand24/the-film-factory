@@ -12,8 +12,8 @@ const Header = () => {
                     the film factory</Link></h1>
                 <nav>
                     <ul>
-                        <li><NavLink to="/movieSearch" activeClassName="selectedTab" ><h2><a>current results</a></h2></NavLink></li>
-                        <li><NavLink to="/allTimeResults" activeClassName="selectedTab"><h2><a>all-time results</a></h2></NavLink></li>
+                        <li><NavLink to="/movieSearch" activeClassName="selectedTab" ><h2>current results</h2></NavLink></li>
+                        <li><NavLink to="/allTimeResults" activeClassName="selectedTab"><h2>all-time results</h2></NavLink></li>
                     </ul>
                 </nav>
             </div>

@@ -4,10 +4,10 @@ import MovieSearchResults from './MovieSearchResults';
 import SearchBar from './SearchBar';
 import SimilarMovies from './SimilarMovies';
 
-function UserSearchMain() {
+function UserSearchMain({ movieToSearch }) {
 
   const [movieId, setMovieId] = useState(null);
-  const [movieToSearch, setMovieToSearch] = useState("");
+  // const [movieToSearch, setMovieToSearch] = useState("");
 
   useEffect(() => {
     movieId &&
@@ -24,7 +24,7 @@ function UserSearchMain() {
     <>
 
 
-      <SearchBar setSearch={setMovieToSearch} />
+      {/* <SearchBar setSearch={setMovieToSearch} /> */}
       <MovieSearchResults setMovieId={setMovieId} movieToSearch={movieToSearch} />
       <SimilarMovies id={movieId} />
 
