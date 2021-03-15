@@ -1,6 +1,6 @@
 // SearchBar
 import { useState } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 // import { randFunction } from './MovieSearchResults';
 
 

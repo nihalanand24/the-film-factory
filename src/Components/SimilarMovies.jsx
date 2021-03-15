@@ -24,7 +24,8 @@ const SimilarMovies = ({ id }) => {
     <>
       <p>Movies Suggestions</p>
 
-      {movieSuggestions.length &&
+      {movieSuggestions.length
+        ?
         movieSuggestions.map((movie) => {
           return (
             <MovieCard
@@ -34,7 +35,9 @@ const SimilarMovies = ({ id }) => {
               <p>{movie.language}</p>
             </MovieCard>
           );
-        })}
+        })
+        : ""
+      }
     </>
   );
 };

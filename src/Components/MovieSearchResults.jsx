@@ -34,12 +34,14 @@ const MovieSearchResults = ({ setMovieId, movieToSearch }) => {
     <>
       <p>Movies Search Results</p>
 
-      {movieArray.length &&
-        movieArray.map((movie) => {
+      {movieArray.length
+        ? movieArray.map((movie) => {
           return (
-            <MovieCard key={movie.id} movie={movie} handleClick={setMovieId}/>
+            <MovieCard key={movie.id} movie={movie} handleClick={setMovieId} />
           );
-        })}
+        })
+        : ""
+      }
     </>
   );
 };
