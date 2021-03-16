@@ -22,7 +22,7 @@ const SavedMoviePairs = () => {
 
       console.log(moviePairs);
 
-      setSavedMoviePairs(moviePairs);
+      setSavedMoviePairs(moviePairs.reverse());
 
     });
   }, []);
@@ -34,13 +34,15 @@ const SavedMoviePairs = () => {
           const { searchedMovie, similarMovie } = movie;
           return (
             <div className="eachPairBox" key={movie.key}>
-              <p>If you like:
-              {searchedMovie.title}, you might like the {similarMovie.language} movie {similarMovie.title}.
-              </p>
 
               <div className="eachPairPosters">
                 <img src={searchedMovie.poster} alt={`Poster for ${searchedMovie.title}`}></img>
                 <img src={similarMovie.poster} alt={`Poster for ${similarMovie.title}`}></img>
+              </div>
+
+              <div className="eachPairCaption">
+                <p>If you like {searchedMovie.title}, you might like the {similarMovie.language} movie {similarMovie.title}.
+                </p>
               </div>
             </div>
           )

@@ -4,7 +4,7 @@ import SavedMoviePairs from './SavedMoviePairs';
 
 const PubResultsMain = () => {
   return (
-    <div className="wrapper centralContainer">
+    <div className="wrapper pubResultsContainer">
       <h2>Here are all the publically available film matches</h2>
         <div className="allResultsInnerBox">
           <SavedMoviePairs />
