@@ -7,6 +7,7 @@ import MovieCard from './MovieCard';
 
 const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArray }) => {
   const [movieSuggestions, setMovieSuggestions] = useState([]);
+  const [selectedArray, setSelectedArray] = useState([])
   // const [recommendedArray, setRecommendedArray] = useState([]);
 
   useEffect(() => {
@@ -18,23 +19,43 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
 
   const addToRecommendedArray = (movie) => {
 
+
     let repeatedMovie = false;
     recommendedArray.forEach((selectedMovie) => {
       if (selectedMovie.id === movie.id) {
         repeatedMovie = true;
+        const cursor = recommendedArray.indexOf(selectedMovie);
+        const selectedCursor =  selectedArray.indexOf(selectedMovie.id)
+        const tempSelectArray = [...selectedArray]
+        const tempArray = [...recommendedArray];
+        tempSelectArray.splice(selectedCursor, 1);
+        setSelectedArray(tempSelectArray);
+        tempArray.splice(cursor, 1);
+        setRecommendedArray(tempArray);
       }
     });
-
+    
     if (!repeatedMovie) {
-      setRecommendedArray([...recommendedArray, {
-        title: movie.title,
-        year: movie.year,
-        language: movie.language,
-        poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-        id: movie.id
-      }]);
+      
+      if (recommendedArray.length === 3) {
+        alert('You have selected the maximum of 3 movies.');
+        const tempArray = [...recommendedArray].slice(0,3);
+        setRecommendedArray(tempArray);
+      } else {
+        setSelectedArray([...selectedArray, movie.id]);
+        setRecommendedArray([...recommendedArray, {
+          title: movie.title,
+          year: movie.year,
+          language: movie.language,
+          poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+          id: movie.id
+        }]);
+      }
+
     }
 
+    
+    
 
   };
 
@@ -70,9 +91,10 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
         ? movieSuggestions.map((movie) => {
           return (
             <MovieCard
+              selectedArray={selectedArray}
               key={movie.id}
               movie={movie}
-              setSearchedMovie={() => addToRecommendedArray(movie)}
+              setSearchedMovie={(e) => addToRecommendedArray(e, movie)}
               setRecommendedArray={setRecommendedArray}>
               <p>{movie.language}</p>
             </MovieCard>
