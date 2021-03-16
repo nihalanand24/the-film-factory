@@ -1,4 +1,6 @@
 // SimilarMovies
+import { Link } from 'react-router-dom';
+import firebase from './firebase.js';
 import { useState, useEffect } from 'react';
 import getSimilarMovies from './getSimilarMovies';
 import MovieCard from './MovieCard';
@@ -28,7 +30,7 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
         title: movie.title,
         year: movie.year,
         language: movie.language,
-        poster: movie.poster_path,
+        poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
         id: movie.id
       }]);
     }
@@ -38,7 +40,25 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
 
   const pushPairToFirebase = () => {
 
-    console.log(searchedMovie, recommendedArray);
+    const usersMovie = {
+      title: searchedMovie.title,
+      poster: `https://image.tmdb.org/t/p/w500${searchedMovie.poster_path}`,
+      id: searchedMovie.id,
+      year: searchedMovie.release_date.slice(0, 4)
+    }
+
+    console.log(usersMovie, recommendedArray);
+
+    const dbRef = firebase.database().ref();
+
+    recommendedArray.forEach(movie => {
+
+      dbRef.push({
+        searchedMovie: usersMovie,
+        similarMovie: movie
+      })
+
+    })
 
   }
 
@@ -59,7 +79,10 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
           );
         })
         : ''}
-      <button onClick={pushPairToFirebase}>Save</button>
+      <Link to="/allTimeResults">
+        <button onClick={pushPairToFirebase}>Save</button>
+      </Link>
+
     </>
   );
 };

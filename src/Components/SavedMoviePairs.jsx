@@ -5,38 +5,44 @@ const SavedMoviePairs = () => {
   const [savedMoviePairs, setSavedMoviePairs] = useState([]);
   useEffect(() => {
     const dbRef = firebase.database().ref();
+
     dbRef.on('value', (data) => {
       const firebaseData = data.val();
 
       const moviePairs = [];
+      console.log(moviePairs);
 
-      for (let movieKey in firebaseData.movies) {
+      for (let movieKey in firebaseData) {
         moviePairs.push({
-          key: movieKey,
-          title: firebaseData.movies[movieKey].title,
-          poster: firebaseData.movies[movieKey].poster
+          searchedMovie: firebaseData[movieKey].searchedMovie,
+          similarMovie: firebaseData[movieKey].similarMovie,
+          key: movieKey
         });
       }
 
-      // console.log(firebaseData);
+      console.log(moviePairs);
+
       setSavedMoviePairs(moviePairs);
+
     });
   }, []);
   return (
-  <>
+    <>
 
-    {
-        savedMoviePairs.map(movie => {
-            return (
-            <div className='movieCard' key={movie.key}>
-                <p>{movie.title}</p>
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} alt={`Poster for ${movie.title}`}/>
+      {
+        savedMoviePairs.map((movie) => {
+          const { searchedMovie, similarMovie } = movie;
+          return (
+            <div key={movie.key}>
+              <p>If you like:
+              {searchedMovie.title}, you might like the {similarMovie.language} movie {similarMovie.title}.
+              </p>
             </div>
-            )
+          )
         })
-    }
+      }
 
-  </>
+    </>
   )
 };
 export default SavedMoviePairs;
