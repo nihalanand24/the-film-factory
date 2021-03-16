@@ -21,14 +21,12 @@ const SearchBar = ({ setSearch, history }) => {
     }
 
     return (
-        <withRouter>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="searchMovie" className="sr-only">search for a movie</label>
                 <input onChange={(e) => setMovieName(e.target.value)} type="text" id="searchMovie" value={movieName} placeholder="search for a movie" />
 
                 <button type="submit">Search</button>
             </form>
-        </withRouter>
     )
 }
 

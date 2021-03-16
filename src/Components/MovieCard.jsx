@@ -1,9 +1,14 @@
 // MovieCard
 
-const MovieCard = ({ movie, handleClick, children }) => {
+const MovieCard = ({ movie, setSearchedMovie, children }) => {
 
+    const handleClick = () => {
+        setSearchedMovie(movie);
+    }
+
+ 
     return (
-        <div className="movieCard" onClick={() => handleClick(movie.id)}>
+        <div className="movieCard" onClick={handleClick}>
             
             {movie.poster_path && <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Poster for ${movie.title}`}></img>}
             <h3>{movie.title}</h3>

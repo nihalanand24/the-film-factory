@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 
-const MovieSearchResults = ({ setMovieId, movieToSearch }) => {
+const MovieSearchResults = ({ setSearchedMovie, movieToSearch }) => {
   const [movieArray, setMovieArray] = useState([]);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const MovieSearchResults = ({ setMovieId, movieToSearch }) => {
       {movieArray.length
         ? movieArray.map((movie) => {
           return (
-            <MovieCard key={movie.id} movie={movie} handleClick={setMovieId} />
+            <MovieCard key={movie.id} movie={movie} setSearchedMovie={setSearchedMovie} />
           );
         })
         : ""

@@ -1,13 +1,11 @@
 // SimilarMovies
-// import axios from 'axios';
 import { useState, useEffect } from 'react';
 import getSimilarMovies from './getSimilarMovies';
-// import languageArray from './languageArray';
 import MovieCard from './MovieCard';
-// import ISO6391 from 'iso-639-1';
 
-const SimilarMovies = ({ id }) => {
+const SimilarMovies = ({ searchedMovie, id }) => {
   const [movieSuggestions, setMovieSuggestions] = useState([]);
+  const [recommendedArray, setRecommendedArray] = useState([]);
 
   useEffect(() => {
     if (id) {
@@ -16,8 +14,15 @@ const SimilarMovies = ({ id }) => {
     }
   }, [id]);
 
-  const sayMyName = (movie) => {
-    console.log(movie.title, movie.original_language, movie.poster_path);
+  const addToRecommendedArray = (movie) => {
+    setRecommendedArray([...recommendedArray, {
+      title: movie.title,
+      year: movie.year,
+      language: movie.language,
+      poster: movie.poster_path,
+    }]);
+
+    console.log(searchedMovie, movie);
   };
 
   return (
@@ -25,19 +30,17 @@ const SimilarMovies = ({ id }) => {
       <p>Movies Suggestions</p>
 
       {movieSuggestions.length
-        ?
-        movieSuggestions.map((movie) => {
-          return (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              handleClick={() => sayMyName(movie)}>
-              <p>{movie.language}</p>
-            </MovieCard>
-          );
-        })
-        : ""
-      }
+        ? movieSuggestions.map((movie) => {
+            return (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                setSearchedMovie={() => addToRecommendedArray(movie)}>
+                <p>{movie.language}</p>
+              </MovieCard>
+            );
+          })
+        : ''}
     </>
   );
 };

@@ -40,6 +40,7 @@ const getSimilarMovies = async (id, setMovieSuggestions) => {
                 similarMovies.push({
                   ...movie,
                   language: language.english_name,
+                  year: movie.release_date.slice(0, 4)
                 });
               }
             });
