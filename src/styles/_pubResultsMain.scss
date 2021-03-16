@@ -1,0 +1,50 @@
+// pubResultsMain
+
+.pubResultsContainer{
+    min-height: calc(100vh - 271px);
+    height: auto;
+    border: 1px solid grey;
+    border-radius: 30px;
+    h2{
+        padding: 25px 0 0 25px;
+    }
+}
+
+.allResultsInnerBox{
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 30px;
+    .eachPairBox{
+        height: max-content;
+        justify-self: center;
+        align-self: stretch;
+        display:flex;
+        flex-direction:column;
+        }
+}
+
+.eachPairCaption{
+    max-width: 250px;
+    p{
+        font-size: 0.9rem;
+        padding: 5px;
+    }
+}
+
+.eachPairPosters{
+    height: 200px;
+    width:100%;
+    display:flex;
+    img{
+            height:100%;
+            &:first-of-type{
+                border-radius:7px 0 0 7px;
+            }
+            &:last-of-type{
+                border-radius: 0 7px 7px 0;
+            }
+        }
+}
