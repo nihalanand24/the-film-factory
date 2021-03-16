@@ -7,7 +7,7 @@ import MovieCard from './MovieCard';
 
 const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArray }) => {
   const [movieSuggestions, setMovieSuggestions] = useState([]);
-  const [selected, setSelected] = useState(false)
+  const [selectedArray, setSelectedArray] = useState([])
   // const [recommendedArray, setRecommendedArray] = useState([]);
 
   useEffect(() => {
@@ -17,19 +17,21 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
     }
   }, [id]);
 
-  const addToRecommendedArray = (event, movie) => {
+  const addToRecommendedArray = (movie) => {
 
-    console.log(event);
 
     let repeatedMovie = false;
     recommendedArray.forEach((selectedMovie) => {
       if (selectedMovie.id === movie.id) {
         repeatedMovie = true;
         const cursor = recommendedArray.indexOf(selectedMovie);
+        const selectedCursor =  selectedArray.indexOf(selectedMovie.id)
+        const tempSelectArray = [...selectedArray]
         const tempArray = [...recommendedArray];
+        tempSelectArray.splice(selectedCursor, 1);
+        setSelectedArray(tempSelectArray);
         tempArray.splice(cursor, 1);
         setRecommendedArray(tempArray);
-        setSelected(false);
       }
     });
     
@@ -40,7 +42,7 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
         const tempArray = [...recommendedArray].slice(0,3);
         setRecommendedArray(tempArray);
       } else {
-        setSelected(true);
+        setSelectedArray([...selectedArray, movie.id]);
         setRecommendedArray([...recommendedArray, {
           title: movie.title,
           year: movie.year,
@@ -89,7 +91,7 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
         ? movieSuggestions.map((movie) => {
           return (
             <MovieCard
-              selected={selected}
+              selectedArray={selectedArray}
               key={movie.id}
               movie={movie}
               setSearchedMovie={(e) => addToRecommendedArray(e, movie)}
