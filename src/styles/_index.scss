@@ -5,10 +5,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    // border: 1px solid grey;
+    // border-radius: 30px;
+    // border-top-left-radius: 30px;
 
     h1{
         font-size: 2rem;
-        // transition: 0.7s all ease;
+        transition: 0.7s all ease;
+        // width: 0;
+        // visibility: hidden;
+    }
+    &:hover{
+        letter-spacing: 0.05rem;
+        // font-size: 7rem;
+
     }
 
+    
 }
+
