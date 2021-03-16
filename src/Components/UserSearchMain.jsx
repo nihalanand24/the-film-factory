@@ -7,15 +7,15 @@ function UserSearchMain({ movieToSearch }) {
 
   const [searchedMovie, setSearchedMovie] = useState({});
   // const [movieToSearch, setMovieToSearch] = useState("");
-
+  const [recommendedArray, setRecommendedArray] = useState([]);
 
   return (
     <>
 
 
       {/* <SearchBar setSearch={setMovieToSearch} /> */}
-      <MovieSearchResults setSearchedMovie={setSearchedMovie} movieToSearch={movieToSearch} />
-      <SimilarMovies searchedMovie={searchedMovie} id={searchedMovie.id} />
+      <MovieSearchResults setSearchedMovie={setSearchedMovie} movieToSearch={movieToSearch} setRecommendedArray={setRecommendedArray} />
+      <SimilarMovies searchedMovie={searchedMovie} id={searchedMovie.id} setRecommendedArray={setRecommendedArray} recommendedArray={recommendedArray} />
 
 
     </>
