@@ -31,18 +31,19 @@ const MovieSearchResults = ({ setSearchedMovie, movieToSearch, setRecommendedArr
   }, [movieToSearch]);
 
   return (
-    <>
-      <p>Movies Search Results</p>
-
-      {movieArray.length
-        ? movieArray.map((movie) => {
-          return (
-            <MovieCard key={movie.id} movie={movie} setSearchedMovie={setSearchedMovie} setRecommendedArray={setRecommendedArray} />
-          );
-        })
-        : ""
-      }
-    </>
+    <div className="matchedMovies">
+      <h2>Movies Search Results</h2>
+      <div className="upperMovieCardContainer">
+        {movieArray.length
+          ? movieArray.map((movie) => {
+            return (
+              <MovieCard key={movie.id} movie={movie} setSearchedMovie={setSearchedMovie} setRecommendedArray={setRecommendedArray} />
+            );
+          })
+          : ""
+        }
+      </div>
+    </div>
   );
 };
 

@@ -1,0 +1,23 @@
+// _currentResults.scss
+// formatting for the current results search tab
+
+// Container storing initial matched movies based on user movie search keywords
+.matchedMovies{
+    // background: $purple;
+    border-radius: 30px;
+    border-top: 5px solid $purple;
+    padding: 20px;
+    
+    display: flex;
+    // align-items: center;
+    flex-direction: column;
+    
+    h2{
+        height: 30px;
+        margin: 12px 16px 16px;
+        // margin-bottom: 20px;
+        font-size: 1.4rem;
+        // background: $purple;
+    }
+
+}
