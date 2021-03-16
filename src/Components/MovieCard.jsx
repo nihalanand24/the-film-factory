@@ -10,6 +10,9 @@ const MovieCard = ({ movie, setSearchedMovie, children, setRecommendedArray }) =
 
 
     return (
+
+        movie.release_date &&
+
         <div className="movieCard" onClick={handleClick}>
 
             {movie.poster_path && <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Poster for ${movie.title}`}></img>}
@@ -25,6 +28,7 @@ const MovieCard = ({ movie, setSearchedMovie, children, setRecommendedArray }) =
 
 
         </div>
+
     )
 }
 
