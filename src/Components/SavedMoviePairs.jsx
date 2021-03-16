@@ -33,10 +33,15 @@ const SavedMoviePairs = () => {
         savedMoviePairs.map((movie) => {
           const { searchedMovie, similarMovie } = movie;
           return (
-            <div key={movie.key}>
+            <div className="eachPairBox" key={movie.key}>
               <p>If you like:
               {searchedMovie.title}, you might like the {similarMovie.language} movie {similarMovie.title}.
               </p>
+
+              <div className="eachPairPosters">
+                <img src={searchedMovie.poster} alt={`Poster for ${searchedMovie.title}`}></img>
+                <img src={similarMovie.poster} alt={`Poster for ${similarMovie.title}`}></img>
+              </div>
             </div>
           )
         })

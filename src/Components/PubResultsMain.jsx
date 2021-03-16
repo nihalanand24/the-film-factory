@@ -6,7 +6,9 @@ const PubResultsMain = () => {
   return (
     <div className="wrapper centralContainer">
       <h2>Here are all the publically available film matches</h2>
-      <SavedMoviePairs />
+        <div className="allResultsInnerBox">
+          <SavedMoviePairs />
+        </div>
     </div>
   );
 };
