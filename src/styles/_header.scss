@@ -3,9 +3,19 @@
         // height: 200px;
         // border: 1px solid blue;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: flex-end;
-        height: 100%;
+        height: 210px;
+    }
+    
+    .headerH1Outer{
+        text-align: left;
+        width: 100%;
+        h1{
+            margin-top: 65px;
+            margin-bottom: 0px;
+        }
     }
 
     nav ul{
@@ -30,7 +40,9 @@
         h2{
             font-family: 'Lato', sans-serif;
             font-weight: 200;
-            
+            min-width: 170px;
+            width: auto;
+
             padding: 20px 30px;
             display: block;
 

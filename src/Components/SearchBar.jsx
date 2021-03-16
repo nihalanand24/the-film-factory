@@ -21,12 +21,14 @@ const SearchBar = ({ setSearch, history }) => {
     }
 
     return (
-            <form onSubmit={handleSubmit}>
+        <form className="movieSearchForm" onSubmit={handleSubmit}>
+            <div className="movieSearchBox">
                 <label htmlFor="searchMovie" className="sr-only">search for a movie</label>
-                <input onChange={(e) => setMovieName(e.target.value)} type="text" id="searchMovie" value={movieName} placeholder="search for a movie" />
+                <input required="true" onChange={(e) => setMovieName(e.target.value)} type="text" id="searchMovie" value={movieName} placeholder="search for a movie" />
 
                 <button type="submit">Search</button>
-            </form>
+            </div>
+        </form>
     )
 }
 

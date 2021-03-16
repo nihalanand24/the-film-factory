@@ -9,7 +9,7 @@ const HomeMain = ({ setMovieToSearch }) => {
     return (
 
         <main>
-            <div className="wrapper welcomeContainer">
+            <div className="wrapper welcomeContainer centralContainer">
                 <h1>Welcome to the film factory.</h1>
                 {/* <h2>search for a movie:</h2> */}
                 <SearchBar setSearch={setMovieToSearch} />

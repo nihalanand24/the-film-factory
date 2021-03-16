@@ -8,8 +8,10 @@ const Header = () => {
     return (
         <header>
             <div className="wrapper headerProps">
-                <h1><Link to="/index">
-                    the film factory</Link></h1>
+                <div className="headerH1Outer">
+                    <h1><Link to="/index">
+                        the film factory</Link></h1>
+                </div>
                 <nav>
                     <ul>
                         <li><NavLink to="/movieSearch" activeClassName="selectedTab" ><h2>current results</h2></NavLink></li>

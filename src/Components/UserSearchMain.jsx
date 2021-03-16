@@ -10,7 +10,7 @@ function UserSearchMain({ movieToSearch }) {
   const [recommendedArray, setRecommendedArray] = useState([]);
 
   return (
-    <>
+    <div className="wrapper centralContainer">
 
 
       {/* <SearchBar setSearch={setMovieToSearch} /> */}
@@ -18,7 +18,7 @@ function UserSearchMain({ movieToSearch }) {
       <SimilarMovies searchedMovie={searchedMovie} id={searchedMovie.id} setRecommendedArray={setRecommendedArray} recommendedArray={recommendedArray} />
 
 
-    </>
+    </div>
   );
 }
 

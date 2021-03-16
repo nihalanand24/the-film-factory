@@ -1,0 +1,58 @@
+// movieSearchForm.scss
+// formatting for the movie form search box
+
+.movieSearchForm{
+
+    .movieSearchBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // border: 1px solid black;
+    }
+
+    input,
+    button{
+        height: 100%;
+        font-family: 'Lato', sans-serif;
+        border-radius: 5px;
+    }
+
+    input{
+        font-size: 1.4rem;
+        padding: 5px;
+
+        border: 1px solid grey;
+        
+        &::placeholder{
+            text-align: center;
+        }
+    
+
+
+    }
+
+  
+    // .movieSearchBox:focus-within input:invalid{
+    //     border-color: $peach;
+    //     outline: none;
+    // }
+
+
+    button{
+        // background: $peach;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: 1px solid $peach;
+        margin-left: 7px;
+        background: $peach;
+        transition: 0.7s ease all;
+    }
+
+    button:hover{
+        background: $turquoise;
+        border: 1px solid $turquoise;
+        cursor: pointer;
+    }
+
+
+}
