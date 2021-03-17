@@ -5,6 +5,7 @@ import SearchBar from './SearchBar';
 
 
 const HomeMain = ({ setMovieToSearch }) => {
+    
 
     return (
 

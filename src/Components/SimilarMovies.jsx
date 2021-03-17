@@ -88,9 +88,15 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
 
       <div className="saveMoviesRow">
         <h3>Add up to three films to the saved list.</h3>
+        
+        {recommendedArray.length ? 
         <Link to="/allTimeResults">
           <button onClick={pushPairToFirebase}>Save</button>
         </Link>
+        : <Link to="/allTimeResults">
+        <button disabled onClick={pushPairToFirebase}>Save</button>
+      </Link>
+      }
       </div>
 
       <div className="lowerMovieCardContainer">

@@ -1,11 +1,11 @@
 // getMovieId
 
 import axios from "axios";
-
 import { useState, useEffect } from "react";
+import { withRouter } from "react-router";
 import MovieCard from "./MovieCard";
 
-const MovieSearchResults = ({ setSearchedMovie, movieToSearch, setRecommendedArray, setShowSuggestedFilms }) => {
+const MovieSearchResults = ({ setSearchedMovie, movieToSearch, setRecommendedArray, setShowSuggestedFilms, history }) => {
   const [movieArray, setMovieArray] = useState([]);
 
   useEffect(() => {
@@ -25,11 +25,19 @@ const MovieSearchResults = ({ setSearchedMovie, movieToSearch, setRecommendedArr
           (movie) => movie.original_language === "en"
           // && !movie.genre_ids.includes(99)
         );
-        console.log(englishMovies);
-        setMovieArray(englishMovies.slice(0, 5));
-        console.log("Searched for", movieToSearch);
+
+        if (!englishMovies.length) {
+          alert(`No Results found for ${movieToSearch}`);
+          history.push('/');
+        } else {
+          // history.push("/movieSearch");
+          setMovieArray(englishMovies.slice(0, 5));
+        }
+      }).catch(() => {
+        alert('No response from API. Try again later.')
+        history.push('/');
       });
-  }, [movieToSearch]);
+  }, [movieToSearch, history]);
 
   return (
     // <div className="matchedMovies">
@@ -51,4 +59,4 @@ const MovieSearchResults = ({ setSearchedMovie, movieToSearch, setRecommendedArr
   );
 };
 
-export default MovieSearchResults;
+export default withRouter(MovieSearchResults);
