@@ -3,7 +3,7 @@ import '../styles/App.scss'
 import MovieSearchResults from './MovieSearchResults';
 import SimilarMovies from './SimilarMovies';
 
-function UserSearchMain({ movieToSearch }) {
+function UserSearchMain({ movieArray, searchedMovieTitle }) {
 
   const [searchedMovie, setSearchedMovie] = useState({});
   // const [movieToSearch, setMovieToSearch] = useState("");
@@ -17,10 +17,12 @@ function UserSearchMain({ movieToSearch }) {
       {/* <SearchBar setSearch={setMovieToSearch} /> */}
 
       <div className="matchedMovies searchResults">
-        <h2 onClick={(() => setShowSuggestedFilms(false))}>Top results found for "{movieToSearch}"</h2>
+        
+        
+          <h2 onClick={(() => setShowSuggestedFilms(false))}>Top results found for "{searchedMovieTitle}"</h2>
 
         {!showSuggestedFilms
-          ? <MovieSearchResults setSearchedMovie={setSearchedMovie} movieToSearch={movieToSearch} setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} />
+          ? <MovieSearchResults setSearchedMovie={setSearchedMovie} setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} movieArray={movieArray}/>
           : null
         }
       </div>
