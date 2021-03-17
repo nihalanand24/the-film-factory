@@ -11,7 +11,9 @@ import Footer from './Components/Footer';
 
 
 const App = () => {
-    const [movieToSearch, setMovieToSearch] = useState("");
+    // const [movieToSearch, setMovieToSearch] = useState("");
+    const [movieArray, setMovieArray] = useState([]);
+    const [searchedMovieTitle, setSearchedMovieTitle] = useState('');
 
     return (
         <Router>
@@ -26,10 +28,14 @@ const App = () => {
                         )
                     }} />
                     <Route path="/index">
-                        <HomeMain setMovieToSearch={setMovieToSearch} />
+                        <HomeMain setMovieArray={setMovieArray} 
+                        setSearchedMovieTitle={setSearchedMovieTitle} searchedMovieTitle={searchedMovieTitle}
+                        />
                     </Route>
                     <Route path="/movieSearch">
-                        <UserSearchMain movieToSearch={movieToSearch} />
+                        <UserSearchMain movieArray={movieArray} 
+                        searchedMovieTitle={searchedMovieTitle} 
+                        />
                     </Route>
                     <Route path="/allTimeResults" component={PubResultsMain} />
                 </Switch>

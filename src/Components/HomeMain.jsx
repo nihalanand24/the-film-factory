@@ -1,10 +1,13 @@
 // HomeMain.jsx
 // This is the main section of the page when the header logo is clicked
 // Also loads on page refresh
+import { useState } from 'react';
 import SearchBar from './SearchBar';
 
 
-const HomeMain = ({ setMovieToSearch }) => {
+const HomeMain = ({ setMovieArray, setSearchedMovieTitle, searchedMovieTitle }) => {
+    const [resultsFound, setResultsFound] = useState(true);
+    
 
     return (
 
@@ -12,8 +15,13 @@ const HomeMain = ({ setMovieToSearch }) => {
             <div className="wrapper welcomeContainer centralContainer">
                 <h2>Welcome to the film factory.</h2>
                 {/* <h2>search for a movie:</h2> */}
-                <SearchBar setSearch={setMovieToSearch} />
-                <h3>Enter an English movie to get recommendations for foreign language films.</h3>
+                <SearchBar setResultsFound={setResultsFound} setMovieArray={setMovieArray} setSearchedMovieTitle={setSearchedMovieTitle}/>
+                
+                {resultsFound ?
+                <h3>Enter an English language film to see foreign language film recommendations.</h3>
+                : <h3 className='noResults'>No Results Found For "{searchedMovieTitle}". Please check the spelling and try again.</h3> 
+                }
+
             </div>
         </main>
 
