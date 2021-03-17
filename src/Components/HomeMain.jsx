@@ -10,9 +10,10 @@ const HomeMain = ({ setMovieToSearch }) => {
 
         <main>
             <div className="wrapper welcomeContainer centralContainer">
-                <h1>Welcome to the film factory.</h1>
+                <h2>Welcome to the film factory.</h2>
                 {/* <h2>search for a movie:</h2> */}
                 <SearchBar setSearch={setMovieToSearch} />
+                <h3>Enter an English movie to get recommendations for foreign language films.</h3>
             </div>
         </main>
 

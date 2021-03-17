@@ -6,14 +6,14 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-end;
-        height: 210px;
+        height: 200px;
     }
     
     .headerH1Outer{
         text-align: left;
         width: 100%;
         h1{
-            margin-top: 65px;
+            margin-top: 60px;
             margin-bottom: 0px;
 
             padding-left: 15px;
@@ -35,7 +35,7 @@
                 background-color: $purple;
             }
             &:nth-of-type(2){
-                background-color: $turquoise;
+                background-color: $peach;
                 margin-left: 10px;
             }
         }

@@ -44,10 +44,11 @@
             border-left-width: 30px;
         }
     
-        // &:hover{
-        //     width: 100%;
-        // }
-
+        &:invalid{
+            // border: $purple;
+            outline: $purple;
+            box-shadow: none;
+        }
     }
 
   

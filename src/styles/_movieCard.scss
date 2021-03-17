@@ -4,12 +4,15 @@
     opacity: 0.85;
     display: inline-block;
     margin: 10px;
-    width: 270px;
+    // width: 270px;
     // height: 490px;
     
     // border: 1px solid $purple;
     background: lightgrey;
     border-radius: 7px;
+
+    max-width: 250px;
+    transition: 0.5s ease all;
 
     // border: 1px solid black;
     // border-bottom-right-radius: 7px;
@@ -21,6 +24,8 @@
     
     img{
         width: 100%;
+        max-width: 250px;
+
         border-radius: 7px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -29,8 +34,17 @@
 }
 
 .selected {
-    border: 3px solid limegreen;
+    border-top: 10px solid $peach;
+    transform: scale(1.03);
+    
+    // border: 5px solid $peach;
+    .movieCardText{
+        background: $peach;
+    }
 }
+
+
+
 // .movieCard:hover{
 
 // }

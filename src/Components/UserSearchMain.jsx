@@ -9,13 +9,25 @@ function UserSearchMain({ movieToSearch }) {
   // const [movieToSearch, setMovieToSearch] = useState("");
   const [recommendedArray, setRecommendedArray] = useState([]);
 
+  const [showSuggestedFilms, setShowSuggestedFilms] = useState(false);
+
   return (
     <div className="wrapper centralContainer">
 
-
       {/* <SearchBar setSearch={setMovieToSearch} /> */}
-      <MovieSearchResults setSearchedMovie={setSearchedMovie} movieToSearch={movieToSearch} setRecommendedArray={setRecommendedArray} />
-      <SimilarMovies searchedMovie={searchedMovie} id={searchedMovie.id} setRecommendedArray={setRecommendedArray} recommendedArray={recommendedArray} />
+
+      <div className="matchedMovies searchResults">
+        <h2 onClick={(() => setShowSuggestedFilms(false))}>Results found for "{movieToSearch}"</h2>
+
+        {!showSuggestedFilms
+          ? <MovieSearchResults setSearchedMovie={setSearchedMovie} movieToSearch={movieToSearch} setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} />
+          : null
+        }
+      </div>
+
+      {showSuggestedFilms
+        ? <SimilarMovies searchedMovie={searchedMovie} id={searchedMovie.id} setRecommendedArray={setRecommendedArray} recommendedArray={recommendedArray} />
+        : null}
 
 
     </div>

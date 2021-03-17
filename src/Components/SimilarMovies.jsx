@@ -25,7 +25,7 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
       if (selectedMovie.id === movie.id) {
         repeatedMovie = true;
         const cursor = recommendedArray.indexOf(selectedMovie);
-        const selectedCursor =  selectedArray.indexOf(selectedMovie.id)
+        const selectedCursor = selectedArray.indexOf(selectedMovie.id)
         const tempSelectArray = [...selectedArray]
         const tempArray = [...recommendedArray];
         tempSelectArray.splice(selectedCursor, 1);
@@ -34,12 +34,12 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
         setRecommendedArray(tempArray);
       }
     });
-    
+
     if (!repeatedMovie) {
-      
+
       if (recommendedArray.length === 3) {
         alert('You have selected the maximum of 3 movies.');
-        const tempArray = [...recommendedArray].slice(0,3);
+        const tempArray = [...recommendedArray].slice(0, 3);
         setRecommendedArray(tempArray);
       } else {
         setSelectedArray([...selectedArray, movie.id]);
@@ -54,8 +54,8 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
 
     }
 
-    
-    
+
+
 
   };
 
@@ -84,28 +84,37 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
   }
 
   return (
-    <>
-      <p>Movies Suggestions</p>
+    <div className="matchedMovies foreign">
+      <h2>Foreign Language Films You Might Like</h2>
 
-      {movieSuggestions.length
-        ? movieSuggestions.map((movie) => {
-          return (
-            <MovieCard
-              selectedArray={selectedArray}
-              key={movie.id}
-              movie={movie}
-              setSearchedMovie={(e) => addToRecommendedArray(e, movie)}
-              setRecommendedArray={setRecommendedArray}>
-              <p>{movie.language}</p>
-            </MovieCard>
-          );
-        })
-        : ''}
-      <Link to="/allTimeResults">
-        <button onClick={pushPairToFirebase}>Save</button>
-      </Link>
+      <div className="saveMoviesRow">
+        <h3>Add up to three films to the saved list.</h3>
+        <Link to="/allTimeResults">
+          <button onClick={pushPairToFirebase}>Save</button>
+        </Link>
+      </div>
 
-    </>
+      <div className="lowerMovieCardContainer">
+
+        {movieSuggestions.length
+          ? movieSuggestions.map((movie) => {
+            return (
+              <MovieCard
+                selectedArray={selectedArray}
+                key={movie.id}
+                movie={movie}
+                setSearchedMovie={(e) => addToRecommendedArray(e, movie)}
+                setRecommendedArray={setRecommendedArray}
+                setShowSuggestedFilms={() => void 0}>
+                <p>{movie.language}</p>
+              </MovieCard>
+            );
+          })
+          : ''}
+      </div>
+
+
+    </div>
   );
 };
 

@@ -9,14 +9,16 @@
 .centralContainer{
     min-height: calc(100vh - 271px);
     height: auto;
-    border: 1px solid grey;
+    // border: 1px solid grey;
     border-radius: 30px;
+    background: white;
 }
 
 body{
     font-family: 'Lato', sans-serif;
     font-size: 62.5%;
     font-weight: 400;
+    background: $turquoise;
     // display: flex;
     // justify-content: center;
     // align-items: center;
@@ -33,7 +35,7 @@ body{
 .wrapper{
     margin: 0 auto;
     width: 90%;
-    max-width: 1200px;
+    max-width: 1400px;
     // border: 1px solid black;
     // height: 1000px;
 }
