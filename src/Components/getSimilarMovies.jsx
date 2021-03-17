@@ -1,7 +1,7 @@
 import axios from 'axios';
 import languageArray from './languageArray';
 
-const getSimilarMovies = async (id, setMovieSuggestions) => {
+const getSimilarMovies = async (id, setMovieSuggestions, setLoading) => {
   const similarMovies = [];
 
   const languages = await Promise.resolve(languageArray);
@@ -51,6 +51,7 @@ const getSimilarMovies = async (id, setMovieSuggestions) => {
   }
 
   setMovieSuggestions(similarMovies);
+  setLoading(false);
 };
 
 export default getSimilarMovies;
