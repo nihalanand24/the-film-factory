@@ -14,7 +14,10 @@ const MovieSearchResults = ({ setSearchedMovie, movieToSearch, setRecommendedArr
         {movieArray.length
           ? movieArray.map((movie) => {
             return (
-              <MovieCard key={movie.id} movie={movie} setSearchedMovie={setSearchedMovie} setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} />
+              <MovieCard key={movie.id} 
+              movie={movie} 
+              setSearchedMovie={setSearchedMovie} 
+              setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} />
             );
           })
           : ""

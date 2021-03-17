@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import firebase from './firebase';
+import NoPoster from "../assets/NoPoster.png";
+
 // refrencing database
 const SavedMoviePairs = () => {
   const [savedMoviePairs, setSavedMoviePairs] = useState([]);
@@ -36,8 +38,19 @@ const SavedMoviePairs = () => {
             <div className="eachPairBox" key={movie.key}>
 
               <div className="eachPairPosters">
-                <img src={searchedMovie.poster} alt={`Poster for ${searchedMovie.title}`}></img>
-                <img src={similarMovie.poster} alt={`Poster for ${similarMovie.title}`}></img>
+                {
+                  searchedMovie.poster === "https://image.tmdb.org/t/p/w500null"
+                  ? <img src={NoPoster} alt="Poster not available"></img>
+                  : <img src={searchedMovie.poster} alt={`Poster for
+                  {searchedMovie.title}`}></img>
+                }
+              
+                {
+                  similarMovie.poster === "https://image.tmdb.org/t/p/w500null"
+                  ?<img src={NoPoster} alt="Poster not available"></img>
+                  :<img src={similarMovie.poster} alt={`Poster for {similarMovie.title}`}></img>
+                }
+
               </div>
 
               <div className="eachPairCaption">

@@ -9,11 +9,14 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
   const [movieSuggestions, setMovieSuggestions] = useState([]);
   const [selectedArray, setSelectedArray] = useState([])
   // const [recommendedArray, setRecommendedArray] = useState([]);
+  const [ loading, setLoading ] = useState(false);
 
   useEffect(() => {
     if (id) {
-      setMovieSuggestions([]);
-      getSimilarMovies(id, setMovieSuggestions);
+      // clear the movie suggestions(array) displayed from previous query.
+      // setMovieSuggestions([]);
+      getSimilarMovies(id, setMovieSuggestions, setLoading);
+      setLoading(true);
     }
   }, [id]);
 
@@ -101,8 +104,16 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
 
       <div className="lowerMovieCardContainer">
 
-        {movieSuggestions.length
-          ? movieSuggestions.map((movie) => {
+        {loading
+        ?<div className="resultsStatus">
+          <div class="loadingBar">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        :movieSuggestions.length
+          ?movieSuggestions.map((movie) => {
             return (
               <MovieCard
                 selectedArray={selectedArray}
@@ -115,7 +126,10 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
               </MovieCard>
             );
           })
-          : ''}
+          :<div className="resultsStatus">
+            <p>No recommended movies available.</p>
+          </div>
+          }
       </div>
 
 
