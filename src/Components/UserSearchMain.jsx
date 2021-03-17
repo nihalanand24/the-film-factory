@@ -17,7 +17,7 @@ function UserSearchMain({ movieToSearch }) {
       {/* <SearchBar setSearch={setMovieToSearch} /> */}
 
       <div className="matchedMovies searchResults">
-        <h2 onClick={(() => setShowSuggestedFilms(false))}>Results found for "{movieToSearch}"</h2>
+        <h2 onClick={(() => setShowSuggestedFilms(false))}>Top results found for "{movieToSearch}"</h2>
 
         {!showSuggestedFilms
           ? <MovieSearchResults setSearchedMovie={setSearchedMovie} movieToSearch={movieToSearch} setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} />

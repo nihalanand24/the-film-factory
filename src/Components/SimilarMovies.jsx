@@ -48,14 +48,12 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
           year: movie.year,
           language: movie.language,
           poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+          backdrop: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
           id: movie.id
         }]);
       }
 
     }
-
-
-
 
   };
 
@@ -64,6 +62,7 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
     const usersMovie = {
       title: searchedMovie.title,
       poster: `https://image.tmdb.org/t/p/w500${searchedMovie.poster_path}`,
+      backdrop: `https://image.tmdb.org/t/p/w500${searchedMovie.backdrop_path}`,
       id: searchedMovie.id,
       year: searchedMovie.release_date.slice(0, 4)
     }
