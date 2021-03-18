@@ -1,82 +1,60 @@
-// Header.scss
-    .headerProps{
-        // height: 200px;
-        // border: 1px solid blue;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-end;
-        height: 200px;
+// header.scss
+
+.headerProps{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 200px;
+}
+
+.headerH1Outer{
+    text-align: left;
+    width: 100%;
+    h1{
+        margin-top: 60px;
+        margin-bottom: 0px;
+        padding-left: 15px;
+    }
+}
+
+nav ul{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-right: 30px;
+    
+    li{
+        list-style-type: none;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 5px;
+        &:nth-of-type(1){
+            background-color: $purple;
+        }
+        &:nth-of-type(2){
+            background-color: $peach;
+            margin-left: 10px;
+        }
     }
     
-    .headerH1Outer{
-        text-align: left;
-        width: 100%;
-        h1{
-            margin-top: 60px;
-            margin-bottom: 0px;
-
-            padding-left: 15px;
-        }
-    }
-
-    nav ul{
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        // padding-right: 10px;
-        padding-right: 30px;
-        
-        li{
-            list-style-type: none;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 5px;
-            &:nth-of-type(1){
-                background-color: $purple;
-            }
-            &:nth-of-type(2){
-                background-color: $peach;
-                margin-left: 10px;
-            }
-        }
-        
-        h2{
-            font-family: 'Lato', sans-serif;
-            font-weight: 200;
-            min-width: 170px;
-            width: auto;
-
-            padding: 20px 30px;
-            display: block;
-
-            height:50px;
-            transition: 0.6s all ease;  
-            &:hover{
-                cursor: pointer;
-                height: 60px;
-                font-size: 1.2rem;
-                // box-shadow: -5px 2px grey;
-            }
-
-        }
-
-        // a{
-        //     font-family: 'Lato', sans-serif;
-        //     font-weight: 200;
-        // } 
-    }
-
-    // Class for React to toggle when li (tab) is selected
-    header{
-        .selectedTab{
-            height: 60px;
+    h2{
+        font-family: 'Lato', sans-serif;
+        font-weight: 200;
+        padding: 10px 15px;
+        display: block;
+        transition: 0.6s all ease;  
+        &:hover{
+            cursor: pointer;
             font-size: 1.2rem;
         }
-            
-
     }
-    
+}
 
-
-
+// Class for React to toggle when li (tab) is selected
+header{
+    .selectedTab{
+        height: 60px;
+        font-size: 1.2rem;
+    }
+}
 

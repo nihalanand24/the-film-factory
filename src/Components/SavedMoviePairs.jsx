@@ -54,7 +54,7 @@ const SavedMoviePairs = () => {
               </div>
 
               <div className="eachPairCaption">
-                <p>If you like {searchedMovie.title} ({searchedMovie.year}), you might like the {similarMovie.language} movie {similarMovie.title} ({similarMovie.year}).
+                <p>If you like <strong>{searchedMovie.title} ({searchedMovie.year})</strong> , you might like the {similarMovie.language} movie <strong>{similarMovie.title} ({similarMovie.year})</strong>.
                 </p>
               </div>
             </div>

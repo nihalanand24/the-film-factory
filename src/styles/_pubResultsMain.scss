@@ -3,18 +3,9 @@
 .pubResultsContainer{
     min-height: calc(100vh - 271px);
     height: auto;
-    // border: 1px solid grey;
-
     border-radius: 30px;
     border-top: 5px solid $peach;
-    // padding: 20px;
-    // display: flex;
-    // flex-direction: column;
-
-
-
     background: white;
-    // border-radius: 30px;
     h2{
         padding: 25px 0 0 25px;
     }
@@ -27,7 +18,6 @@
     display:grid;
     grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
     gap: 35px;
-    // grid-auto-rows: minmax(270px, auto);
     grid-template-rows: repeat(auto-fit, 1fr);
 
     .eachPairBox{
@@ -37,7 +27,6 @@
         display:flex;
         flex-direction:column;
         padding: 5px;
-        // margin: 0 30px;
         }
 }
 
