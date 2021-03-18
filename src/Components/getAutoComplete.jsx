@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getAutoComplete = async (movieName, setAutoComplete) => {
+const getAutoComplete = async (movieName) => {
     let suggestions = [];
 
     if (movieName.length > 2) {
@@ -22,9 +22,9 @@ const getAutoComplete = async (movieName, setAutoComplete) => {
         englishMovies.forEach((movie) => {
           suggestions.push(movie.title);
         });
-        setAutoComplete(suggestions);
+        return suggestions;
     } else {
-      setAutoComplete([]);
+      return [];
     }
 }
 

@@ -14,7 +14,21 @@ const SearchBar = ({
   const [autoComplete, setAutoComplete] = useState([]);
 
   useEffect(() => {
-    getAutoComplete(movieName, setAutoComplete);
+
+    let mounted = true;
+    const getData = async () => {
+      const autoComp = await getAutoComplete(movieName);
+      if (mounted) {
+        setAutoComplete(autoComp);
+      }
+    }
+
+    getData();
+
+    return () => {
+      mounted = false;
+    }
+    
   }, [movieName]);
 
   const handleSubmit = (event) => {
