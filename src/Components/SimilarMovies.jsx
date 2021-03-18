@@ -100,15 +100,18 @@ const SimilarMovies = ({
       <h2>Foreign Language Films You Might Like</h2>
 
       <div className='saveMoviesRow'>
-        <h3>Add up to three films to the saved list.</h3>
 
-        {recommendedArray.length ? (
-          <Link to='/allTimeResults'>
-            <button onClick={pushPairToFirebase}>Save</button>
-          </Link>
-        ) : (
-          <button disabled>Save</button>
-        )}
+        <div className="saveButtonPanel">
+          <h3>Add up to three films to the saved list.</h3>
+          {recommendedArray.length ? (
+            <Link to='/allTimeResults'>
+              <button onClick={pushPairToFirebase}>Save</button>
+            </Link>
+          ) : (
+            <button disabled>Save</button>
+          )}
+        </div>
+
         <div className='filters'>
           <Filter
             setFilter={setFilterLang}

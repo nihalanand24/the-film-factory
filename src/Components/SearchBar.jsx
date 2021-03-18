@@ -67,6 +67,7 @@ const SearchBar = ({
           id='searchMovie'
           value={movieName}
           placeholder='search for a movie'
+          autoComplete='off'
         />
 
         {movieName.length ? (

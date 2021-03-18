@@ -93,6 +93,24 @@
     }
 }
 
+.saveButtonPanel{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.filters{
+    display: flex;
+    form{
+        font-size: 0.8rem;
+        select{
+            background-color: $turquoise;
+            border: none;
+            border-radius: 5px;
+        }
+    }
+
+}
+
 // Loading bar
 .loadingBar{
     display: flex;
