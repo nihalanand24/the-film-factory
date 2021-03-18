@@ -9,7 +9,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        // border: 1px solid black;
         position: relative;
 
         .autoComplete {
@@ -52,15 +51,10 @@
     input{
         font-size: 1.4rem;
         padding: 5px;
-
         width: 75%;
-
         border: 1px solid $peach;
- 
         border-left: 15px solid $peach;
-        
         border-right: none;
-        
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         transition: 0.7s ease all;
@@ -77,29 +71,17 @@
         }
     
         &:invalid{
-            // border: $purple;
             outline: $purple;
             box-shadow: none;
         }
     }
 
-  
-    // .movieSearchBox:focus-within input:invalid{
-    //     border-color: $peach;
-    //     outline: none;
-    // }
-
-
     button{
-        // background: $peach;
         padding: 10px 20px;
         font-size: 1rem;
         border: 1px solid $peach;
-
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
-
-        // margin-left: 7px;
         background: $peach;
         transition: 0.7s ease all;
     }
@@ -109,6 +91,4 @@
         border: 1px solid $turquoise;
         cursor: pointer;
     }
-
-
 }

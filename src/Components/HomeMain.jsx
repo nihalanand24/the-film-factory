@@ -18,7 +18,7 @@ const HomeMain = ({ setMovieArray, setSearchedMovieTitle, searchedMovieTitle }) 
                 <SearchBar setResultsFound={setResultsFound} setMovieArray={setMovieArray} setSearchedMovieTitle={setSearchedMovieTitle}/>
                 
                 {resultsFound ?
-                <h3>Enter an English language film to see foreign language film recommendations.</h3>
+                <h3>Enter an English film to see foreign language film recommendations.</h3>
                 : <h3 className='noResults'>No Results Found For "{searchedMovieTitle}". Please check the spelling and try again.</h3> 
                 }
 

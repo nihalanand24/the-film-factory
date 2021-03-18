@@ -5,33 +5,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // border: 1px solid grey;
-    // border-radius: 30px;
-    // border-top-left-radius: 30px;
 
     h2{
         font-size: 2rem;
+        width: 90%;
         transition: 0.7s all ease;
         font-family: 'Josefin Slab', serif;
         font-weight: 500;
         margin-bottom: 10px;
-        // width: 0;
-        // visibility: hidden;
+        text-align: center;
     }
-    // &:hover{
-    //     letter-spacing: 0.05rem;
-    // }
-
+    
     h3{
+        color:gray;
+        font-size:0.9rem;
         margin-top: 10px;
         width: 90%;
         max-width: 350px;
         text-align: center;
         font-weight: 400;
-        // border: 1px solid black;
     }
-
-
-    
 }
 

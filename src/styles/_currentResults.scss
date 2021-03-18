@@ -1,26 +1,16 @@
 // _currentResults.scss
-// formatting for the current results search tab
-
-
-
 
 // Container storing initial matched movies based on user movie search keywords
 .searchResults{
     h2{
-        
         display: inline-block;
         width: max-content;
         transition: 0.7s ease all;
         &:hover{
-            // font-size: 1.5rem;
             cursor: pointer;
             background: $peach;
         }
     }
-    
-    // .movieCard{
-    //     animation: slideMotion 0.7s ease;
-    // }
 }
 
 @keyframes slideMotion
@@ -37,66 +27,45 @@
     animation: slideMotion 1.2s ease;
 }
 
-// .searchResults{
-//     animation: slideMotion 0.7s ease;
-// }
-
-
 .matchedMovies{
-    // background: $purple;
     border-radius: 30px;
     border-top: 5px solid $purple;
     padding: 20px;
-    
     display: flex;
-    // align-items: center;
     flex-direction: column;
-    
-    // transition: 0.7s ease all;
-
     h2{
-        height: 30px;
-        margin: 8px 16px 10px;
-        // margin-bottom: 20px;
+        width:100%;
+        padding:7px 16px;
+        margin-bottom:16px;
         font-size: 1.4rem;
-        // background: $purple;
-        // transition: 0.7s ease all;
-        // &:hover{
-        //     cursor: pointer;
-        // }
+        border-radius:7px;
     }
-    // &:hover{
-    //     background: $purple;
-    // }
-
     .matchedMoviesH3{
-        margin-left: 16px;
+        padding:0 16px;
     }
-
     .saveMoviesRow{
         display: flex;
-        // justify-content: space-between;
         align-items: center;
         margin-left: 16px;
         margin-bottom: 10px;
-        
         button{
             padding: 10px 30px;
             margin-left: 30px;
             background: $purple;
             font-size: 1rem;
             border: none;
-            // outline: none;
+            border-radius:7px;
             cursor: pointer;
             transition: 0.7s ease all;
             &:hover{
-                background: $turquoise;
+                background: $peach;
+            }
+            &:disabled{
+                background-color:lightgray;
+                opacity:0.7;
             }
         }
-
-
     }
-
 }
 
 .upperMovieCardContainer{
@@ -111,6 +80,7 @@
     grid-auto-rows: max-content;
     height: 60vh;
     overflow-y: scroll;
+    scrollbar-color: $purple #f0f0f0;
 }
 
 .resultsStatus{

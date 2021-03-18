@@ -1,0 +1,54 @@
+// media queries
+
+@media(max-width:500px){
+        h1{
+            font-size: 3.5rem;
+            text-align:center;
+        }
+}
+
+@media(max-width:450px) {
+    nav{
+        width: 100%;
+        ul{
+            padding-right:0;
+            justify-content:center;
+        }
+    }
+}
+
+@media(max-width:430px){
+    .movieSearchBox{
+        width: 90%;
+        input{
+            font-size: 1.1rem;
+        }
+    }
+    .headerH1Outer{
+        h1{
+        font-size: 2.8rem;
+        padding: 0;
+        }
+    }
+    .matchedMoviesH3{
+        width:80%;
+    }
+}
+
+@media(max-width:370px){
+    nav ul{
+            h2{
+                padding: 5px 10px;
+                font-size: 0.85rem;
+                &:hover{
+                font-size:1rem;
+            }
+        }
+    }
+    .headerH1Outer{
+        h1{
+            margin-top:45px;
+            padding: 0 20px;
+        }
+    }
+}
