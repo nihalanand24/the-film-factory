@@ -12,12 +12,14 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
   const [ loading, setLoading ] = useState(false);
   const [availableLanguages, setAvailableLanguages] = useState([]);
   const [filterLang, setFilterLang] = useState('');
+  const [availableGenres, setAvailableGenres] = useState([]);
+  const [filterGenre, setFilterGenre] = useState('');
 
   useEffect(() => {
     if (id) {
       // clear the movie suggestions(array) displayed from previous query.
       // setMovieSuggestions([]);
-      getSimilarMovies(id, setMovieSuggestions, setLoading, setAvailableLanguages);
+      getSimilarMovies(id, setMovieSuggestions, setLoading, setAvailableLanguages, setAvailableGenres);
       setLoading(true);
     }
 
@@ -102,10 +104,11 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
         :
         <button disabled>Save</button>
       }
+      <div className='filters'>
         <form onChange={(e) => setFilterLang(e.target.value)}>
-          <label htmlFor="langauge">Filter by Language: </label>
-          <select name="language" id="language">
-            <option value="" selected>None</option>
+          <label htmlFor="language">Filter by language: </label>
+          <select name="language" id="language" defaultValue="">
+            <option value="">None</option>
             {
               availableLanguages.map((lang, index) => {
                 return (
@@ -115,6 +118,20 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
             }
           </select>
         </form>
+        <form onChange={(e) => setFilterGenre(e.target.value)}>
+          <label htmlFor="genre">Filter by genre:</label>
+          <select name="genre" id="genre" defaultValue="">
+            <option value="">None</option>
+            {
+              availableGenres.map((genre, index) => {
+                return (
+                  <option key={index} value={genre}>{genre}</option>
+                )
+              })
+            }
+          </select>
+        </form>
+      </div>
       </div>
 
       <div className="lowerMovieCardContainer">
@@ -128,7 +145,10 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
             </div>
           </div>
         :movieSuggestions.length
-         ? movieSuggestions.filter(movie => (filterLang ? movie.language === filterLang : movie)).map((movie) => {
+         ? movieSuggestions
+         .filter(movie => (filterLang ? movie.language === filterLang : movie))
+         .filter(movie => (filterGenre ? movie.genres.includes(filterGenre) : movie))
+          .map((movie) => {
             return (
               <MovieCard
                 selectedArray={selectedArray}

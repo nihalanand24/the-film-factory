@@ -58,7 +58,7 @@ const SearchBar = ({
             {autoComplete.slice(0, 5).map((movie, index) => {
               return (
                 <li key={index}>
-                  <button type='submit' onKe onClick={() => setMovieName(movie)}>
+                  <button type='submit' onClick={() => setMovieName(movie)}>
                     {movie}
                   </button>
                 </li>
