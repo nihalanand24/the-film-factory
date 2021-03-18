@@ -45,7 +45,8 @@
     }
     .saveMoviesRow{
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        // align-items: center;
         margin-left: 16px;
         margin-bottom: 10px;
         button{
@@ -106,9 +107,13 @@
             background-color: $turquoise;
             border: none;
             border-radius: 5px;
+
         }
     }
+}
 
+select:nth-of-type(1){
+   margin-right: 15px;
 }
 
 // Loading bar

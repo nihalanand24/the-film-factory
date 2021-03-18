@@ -5,10 +5,10 @@ import SavedMoviePairs from './SavedMoviePairs';
 const PubResultsMain = () => {
   return (
     <div className="wrapper pubResultsContainer">
-      <h2>Here are all the publically available film matches</h2>
-        <div className="allResultsInnerBox">
-          <SavedMoviePairs />
-        </div>
+      <h2>All-time saved movie pairs</h2>
+      <div className="allResultsInnerBox">
+        <SavedMoviePairs />
+      </div>
     </div>
   );
 };

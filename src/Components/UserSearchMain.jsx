@@ -17,12 +17,12 @@ function UserSearchMain({ movieArray, searchedMovieTitle }) {
       {/* <SearchBar setSearch={setMovieToSearch} /> */}
 
       <div className="matchedMovies searchResults">
-        
-        
-          <h2 onClick={(() => setShowSuggestedFilms(false))}>Top results found for "{searchedMovieTitle}"</h2>
+
+
+        <h2 onClick={(() => setShowSuggestedFilms(false))}>Top results found for "{searchedMovieTitle}"</h2>
 
         {!showSuggestedFilms
-          ? <MovieSearchResults setSearchedMovie={setSearchedMovie} setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} movieArray={movieArray}/>
+          ? <MovieSearchResults setSearchedMovie={setSearchedMovie} setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} movieArray={movieArray} />
           : null
         }
       </div>

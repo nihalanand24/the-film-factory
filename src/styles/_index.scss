@@ -25,5 +25,17 @@
         text-align: center;
         font-weight: 400;
     }
+
+    .noResults{
+        background-color: #a07eb3;
+        color: white;
+        border-radius: 5px;
+        padding: 16px;
+        transition: 0.7s ease all;
+        div{
+            margin-top: 10px;
+        }
+    }
+
 }
 

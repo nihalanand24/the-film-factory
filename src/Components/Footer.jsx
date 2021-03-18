@@ -3,13 +3,10 @@
 
 const Footer = () => {
 
-
-
-
     return (
         <footer>
             <div className="wrapper">
-                <h3>created at Juno College</h3>
+                <h3><a href="https://junocollege.com/" target="/_blank">created at Juno College</a></h3>
             </div>
         </footer>
     );

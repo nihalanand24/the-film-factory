@@ -28,16 +28,18 @@ const App = () => {
                         )
                     }} />
                     <Route path="/index">
-                        <HomeMain setMovieArray={setMovieArray} 
-                        setSearchedMovieTitle={setSearchedMovieTitle} searchedMovieTitle={searchedMovieTitle}
+                        <HomeMain setMovieArray={setMovieArray}
+                            setSearchedMovieTitle={setSearchedMovieTitle} searchedMovieTitle={searchedMovieTitle}
                         />
                     </Route>
                     <Route path="/movieSearch">
-                        <UserSearchMain movieArray={movieArray} 
-                        searchedMovieTitle={searchedMovieTitle} 
+                        <UserSearchMain movieArray={movieArray}
+                            searchedMovieTitle={searchedMovieTitle}
                         />
                     </Route>
-                    <Route path="/allTimeResults" component={PubResultsMain} />
+                    <Route path="/allTimeResults">
+                        <PubResultsMain />
+                    </Route>
                 </Switch>
                 <Footer />
             </>
