@@ -10,14 +10,17 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
   const [selectedArray, setSelectedArray] = useState([])
   // const [recommendedArray, setRecommendedArray] = useState([]);
   const [ loading, setLoading ] = useState(false);
+  const [availableLanguages, setAvailableLanguages] = useState([]);
+  const [filterLang, setFilterLang] = useState('');
 
   useEffect(() => {
     if (id) {
       // clear the movie suggestions(array) displayed from previous query.
       // setMovieSuggestions([]);
-      getSimilarMovies(id, setMovieSuggestions, setLoading);
+      getSimilarMovies(id, setMovieSuggestions, setLoading, setAvailableLanguages);
       setLoading(true);
     }
+
   }, [id]);
 
   const addToRecommendedArray = (movie) => {
@@ -96,10 +99,22 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
         <Link to="/allTimeResults">
           <button onClick={pushPairToFirebase}>Save</button>
         </Link>
-        : <Link to="/allTimeResults">
-        <button disabled onClick={pushPairToFirebase}>Save</button>
-      </Link>
+        :
+        <button disabled>Save</button>
       }
+        <form onChange={(e) => setFilterLang(e.target.value)}>
+          <label htmlFor="langauge">Filter by Language: </label>
+          <select name="language" id="language">
+            <option value="" selected>None</option>
+            {
+              availableLanguages.map((lang, index) => {
+                return (
+                  <option key={index} value={lang}>{lang}</option>
+                )
+              })
+            }
+          </select>
+        </form>
       </div>
 
       <div className="lowerMovieCardContainer">
@@ -113,13 +128,13 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
             </div>
           </div>
         :movieSuggestions.length
-          ?movieSuggestions.map((movie) => {
+         ? movieSuggestions.filter(movie => (filterLang ? movie.language === filterLang : movie)).map((movie) => {
             return (
               <MovieCard
                 selectedArray={selectedArray}
                 key={movie.id}
                 movie={movie}
-                setSearchedMovie={(e) => addToRecommendedArray(e, movie)}
+                setSearchedMovie={() => addToRecommendedArray(movie)}
                 setRecommendedArray={setRecommendedArray}
                 setShowSuggestedFilms={() => void 0}>
                 <p>{movie.language}</p>

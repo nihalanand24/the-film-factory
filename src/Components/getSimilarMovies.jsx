@@ -1,8 +1,9 @@
 import axios from 'axios';
 import languageArray from './languageArray';
 
-const getSimilarMovies = async (id, setMovieSuggestions, setLoading) => {
+const getSimilarMovies = async (id, setMovieSuggestions, setLoading, setAvailableLanguages) => {
   const similarMovies = [];
+  const langArray = [];
 
   const languages = await Promise.resolve(languageArray);
 
@@ -42,6 +43,9 @@ const getSimilarMovies = async (id, setMovieSuggestions, setLoading) => {
                   language: language.english_name,
                   year: movie.release_date.slice(0, 4)
                 });
+                if (!langArray.includes(language.english_name)){
+                  langArray.push(language.english_name);
+                }
               }
             });
           }
@@ -49,7 +53,8 @@ const getSimilarMovies = async (id, setMovieSuggestions, setLoading) => {
       }
     }
   }
-
+  
+  setAvailableLanguages(langArray);
   setMovieSuggestions(similarMovies);
   setLoading(false);
 };

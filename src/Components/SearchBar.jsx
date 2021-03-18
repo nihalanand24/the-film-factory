@@ -15,7 +15,7 @@ const SearchBar = ({
 
   useEffect(() => {
     let suggestions = [];
-    if (movieName) {
+    if (movieName.length > 2) {
       axios({
         method: 'GET',
         url: 'https://api.themoviedb.org/3/search/movie',
@@ -37,6 +37,8 @@ const SearchBar = ({
     } else {
       setAutoComplete([]);
     }
+
+    
   }, [movieName]);
 
   const handleSubmit = (event) => {
@@ -101,7 +103,7 @@ const SearchBar = ({
             {autoComplete.slice(0, 5).map((movie, index) => {
               return (
                 <li key={index}>
-                  <button onClick={() => setMovieName(movie)}>{movie}</button>
+                  <button type='submit' onClick={() => setMovieName(movie)}>{movie}</button>
                 </li>
               );
             })}
