@@ -106,7 +106,7 @@ const SimilarMovies = ({ searchedMovie, id, recommendedArray, setRecommendedArra
 
         {loading
         ?<div className="resultsStatus">
-          <div class="loadingBar">
+          <div className="loadingBar">
               <div></div>
               <div></div>
               <div></div>

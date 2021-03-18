@@ -20,7 +20,7 @@ const MovieSearchResults = ({ setSearchedMovie, movieToSearch, setRecommendedArr
               setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} />
             );
           })
-          : ""
+          : null
         }
       </div>
 
