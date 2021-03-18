@@ -34,12 +34,14 @@
     display: flex;
     flex-direction: column;
     h2{
-        height: 30px;
-        margin: 8px 16px 10px;
+        width:100%;
+        padding:7px 16px;
+        margin-bottom:16px;
         font-size: 1.4rem;
+        border-radius:7px;
     }
     .matchedMoviesH3{
-        margin-left: 16px;
+        padding:0 16px;
     }
     .saveMoviesRow{
         display: flex;
@@ -52,10 +54,15 @@
             background: $purple;
             font-size: 1rem;
             border: none;
+            border-radius:7px;
             cursor: pointer;
             transition: 0.7s ease all;
             &:hover{
-                background: $turquoise;
+                background: $peach;
+            }
+            &:disabled{
+                background-color:lightgray;
+                opacity:0.7;
             }
         }
     }
@@ -73,6 +80,7 @@
     grid-auto-rows: max-content;
     height: 60vh;
     overflow-y: scroll;
+    scrollbar-color: $purple #f0f0f0;
 }
 
 .resultsStatus{
