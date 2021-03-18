@@ -39,7 +39,7 @@ const SearchBar = ({
 };
 
   return (
-    <form className='movieSearchForm' onSubmit={handleSubmit}>
+    <form className='movieSearchForm' onSubmit={handleSubmit} defaultValue={movieName}>
       <div className='movieSearchBox'>
         <label htmlFor='searchMovie' className='sr-only'>
           search for a movie
@@ -55,6 +55,7 @@ const SearchBar = ({
 
         {movieName.length ? (
           <ul className='dropDown'>
+              <li><button className="hiddenButton"></button></li>
             {autoComplete.slice(0, 5).map((movie, index) => {
               return (
                 <li key={index}>
