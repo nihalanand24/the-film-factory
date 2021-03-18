@@ -8,21 +8,42 @@ import { useCallback, useState, useEffect } from "react";
 function useRoveFocus(size) {
   const [currentFocus, setCurrentFocus] = useState(0);
 
+  const search = document.getElementById('searchMovie');
+
   const handleKeyDown = useCallback(
+    // changed to e from original solution which said (e: any)
     e => {
       if (e.keyCode === 40) {
         // Down arrow
+        // modified from original to allow looping through searchBar
         e.preventDefault();
-        setCurrentFocus(currentFocus === size - 1 ? 0 : currentFocus + 1);
+        if (currentFocus === size - 1) {
+          setCurrentFocus(- 1);
+          search.focus();
+        } else {
+          setCurrentFocus(currentFocus + 1);
+        }
       } else if (e.keyCode === 38) {
         // Up arrow
         e.preventDefault();
-        setCurrentFocus(currentFocus === 0 ? size - 1 : currentFocus - 1);
+        if (currentFocus === 0){
+          setCurrentFocus(-1);
+          search.focus();
+        } else if (document.activeElement === search){
+          setCurrentFocus(size - 1);
+        } else {
+          setCurrentFocus(currentFocus - 1);
+        }
+      } else if (e.keyCode === 27) {
+        // modified from original to allow escape to searchBar
+        setCurrentFocus(-1);
+        search.focus();
       } else {
+        // added else to original solution to allow user to continue typing movie name
         setCurrentFocus(-1);
       }
     },
-    [size, currentFocus, setCurrentFocus]
+    [size, currentFocus, setCurrentFocus, search]
   );
 
   useEffect(() => {
