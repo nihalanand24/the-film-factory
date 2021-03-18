@@ -10,6 +10,36 @@
         justify-content: center;
         align-items: center;
         // border: 1px solid black;
+        position: relative;
+
+        .autoComplete {
+            background-color: white;
+            border: 1px solid $peach;
+            border-radius: 0 0 10px 10px;
+            position: absolute;
+            top: 40px;
+            left: 10px;
+            list-style-type: none;
+            li {
+                display: block;
+            }
+            button {
+                text-align: left;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.541);
+                border: none;
+                transition: none;
+                &:focus,
+                &:hover {
+                    outline: none;
+                    background-color: #fde8cf;
+                }
+            }
+
+            .hiddenButton {
+                display: none;
+            }
+        }
     }
 
     input,
