@@ -16,7 +16,7 @@ const MovieCard = ({ movie, setSearchedMovie, children, setRecommendedArray, sel
     }
 
     return (
-        movie.release_date &&
+        movie.release_date ?
         <div className={`movieCard ${selected ? 'selected' : ""}`} onClick={handleClick}>
             {movie.poster_path
                 ? <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Poster for ${movie.title}`}></img>
@@ -25,10 +25,11 @@ const MovieCard = ({ movie, setSearchedMovie, children, setRecommendedArray, sel
             }
             <div className="movieCardText">
                 <h3>{movie.title}</h3>
-                {movie.release_date && <h4>({movie.release_date.slice(0, 4)})</h4>}
+                {movie.release_date ? <h4>({movie.release_date.slice(0, 4)})</h4> : null}
                 {children}
             </div>
         </div>
+        : null
     )
 }
 
