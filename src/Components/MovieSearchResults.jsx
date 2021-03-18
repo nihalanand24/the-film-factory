@@ -2,7 +2,7 @@
 
 import MovieCard from "./MovieCard";
 
-const MovieSearchResults = ({ setSearchedMovie, movieToSearch, setRecommendedArray, setShowSuggestedFilms, movieArray }) => {
+const MovieSearchResults = ({ setSearchedMovie, setRecommendedArray, setShowSuggestedFilms, movieArray }) => {
 
 
   return (

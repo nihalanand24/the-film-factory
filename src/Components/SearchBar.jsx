@@ -1,8 +1,8 @@
 // SearchBar
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
-// import { randFunction } from './MovieSearchResults';
+import getAutoComplete from './getAutoComplete';
+import getSearchResults from './getSearchResults';
 
 const SearchBar = ({
   setResultsFound,
@@ -14,74 +14,29 @@ const SearchBar = ({
   const [autoComplete, setAutoComplete] = useState([]);
 
   useEffect(() => {
-    let suggestions = [];
-    if (movieName.length > 2) {
-      axios({
-        method: 'GET',
-        url: 'https://api.themoviedb.org/3/search/movie',
-        dataResponse: 'JSON',
-        params: {
-          api_key: '0f71218e40b140c550833011fa9c4afb',
-          query: movieName,
-        },
-      }).then((res) => {
-        const movies = res.data.results;
-        const engMovies = movies.filter(
-          (movie) => movie.original_language === 'en'
-        );
-        engMovies.forEach((movie) => {
-          suggestions.push(movie.title);
-        });
-        setAutoComplete(suggestions);
-      });
-    } else {
-      setAutoComplete([]);
-    }
-
-    
+    getAutoComplete(movieName, setAutoComplete);
   }, [movieName]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    movieName &&
-      axios({
-        method: 'GET',
-        url: 'https://api.themoviedb.org/3/search/movie',
-        dataResponse: 'JSON',
-        params: {
-          api_key: '0f71218e40b140c550833011fa9c4afb',
-          query: movieName,
-        },
-      })
-        .then((response) => {
-          const movies = response.data.results;
-          // console.log(movies);
-          const englishMovies = movies.filter(
-            (movie) => movie.original_language === 'en'
-            //   && !movie.genre_ids.includes(99)
-          );
+    const getData = async () => {
+      const englishMovies = await getSearchResults(movieName);
 
-          setSearchedMovieTitle(movieName);
+      setSearchedMovieTitle(movieName);
 
-          if (!englishMovies.length) {
-            setResultsFound(false);
-            setMovieArray([]);
-          } else {
-            history.push('/movieSearch');
-            setMovieArray(englishMovies.slice(0, 5));
-          }
-        })
-        .catch(() => {
-          alert('No data response received. Please try again later.');
-        });
+      if (!englishMovies.length) {
+        setResultsFound(false);
+        setMovieArray([]);
+      } else {
+        history.push('/movieSearch');
+        setMovieArray(englishMovies.slice(0, 5));
+      }
+    };
 
-    // history.push("/movieSearch");
+    getData();
 
-    // setSearch(movieName);
-    console.log(movieName);
-    // randFunction();
-  };
+};
 
   return (
     <form className='movieSearchForm' onSubmit={handleSubmit}>
@@ -103,7 +58,9 @@ const SearchBar = ({
             {autoComplete.slice(0, 5).map((movie, index) => {
               return (
                 <li key={index}>
-                  <button type='submit' onClick={() => setMovieName(movie)}>{movie}</button>
+                  <button type='submit' onKe onClick={() => setMovieName(movie)}>
+                    {movie}
+                  </button>
                 </li>
               );
             })}
