@@ -1,6 +1,7 @@
 // SearchBar
 import { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import AutoComplete from './AutoComplete';
 import getAutoComplete from './getAutoComplete';
 import getSearchResults from './getSearchResults';
 
@@ -11,7 +12,8 @@ const SearchBar = ({
   setSearchedMovieTitle,
 }) => {
   const [movieName, setMovieName] = useState('');
-  const [autoComplete, setAutoComplete] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+
 
   useEffect(() => {
 
@@ -19,7 +21,7 @@ const SearchBar = ({
     const getData = async () => {
       const autoComp = await getAutoComplete(movieName);
       if (mounted) {
-        setAutoComplete(autoComp);
+        setSuggestions(autoComp.slice(0,5));
       }
     }
 
@@ -68,18 +70,8 @@ const SearchBar = ({
         />
 
         {movieName.length ? (
-          <ul className='dropDown'>
-              <li><button className="hiddenButton"></button></li>
-            {autoComplete.slice(0, 5).map((movie, index) => {
-              return (
-                <li key={index}>
-                  <button type='submit' onClick={() => setMovieName(movie)}>
-                    {movie}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+          <AutoComplete suggestions={suggestions} setSelected={setMovieName}/>
+          
         ) : null}
 
         <button type='submit'>Search</button>

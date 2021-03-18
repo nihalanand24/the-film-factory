@@ -12,7 +12,7 @@
         // border: 1px solid black;
         position: relative;
 
-        .dropDown {
+        .autoComplete {
             background-color: white;
             border: 1px solid $peach;
             border-radius: 0 0 10px 10px;
@@ -31,7 +31,8 @@
                 transition: none;
                 &:focus,
                 &:hover {
-                    outline: 1px solid $peach;
+                    outline: none;
+                    background-color: #fde8cf;
                 }
             }
 
