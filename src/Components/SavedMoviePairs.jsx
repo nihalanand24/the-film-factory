@@ -1,3 +1,5 @@
+// SavedMoviePairs.jsx
+
 import { useState, useEffect } from 'react';
 import firebase from './firebase';
 import NoPoster from "../assets/NoPoster.png";
@@ -11,10 +13,7 @@ const SavedMoviePairs = () => {
 
     dbRef.on('value', (data) => {
       const firebaseData = data.val();
-
       const moviePairs = [];
-      console.log(moviePairs);
-
 
       for (let movieKey in firebaseData) {
         moviePairs.push({
@@ -22,21 +21,15 @@ const SavedMoviePairs = () => {
           similarMovie: firebaseData[movieKey].similarMovie,
           key: movieKey
         });
-
       }
-
-
-
-      // console.log(moviePairs);
 
       setSavedMoviePairs(moviePairs.reverse().slice(0, 20));
 
-
     });
   }, []);
+
   return (
     <>
-
       {
         savedMoviePairs.map((movie) => {
           const { searchedMovie, similarMovie } = movie;
@@ -56,7 +49,6 @@ const SavedMoviePairs = () => {
                     ? <img src={NoPoster} alt="Poster not available"></img>
                     : <img src={similarMovie.poster} alt={`Poster for {similarMovie.title}`}></img>
                 }
-
               </div>
 
               <div className="eachPairCaption">
@@ -67,8 +59,8 @@ const SavedMoviePairs = () => {
           )
         })
       }
-
     </>
   )
 };
+
 export default SavedMoviePairs;

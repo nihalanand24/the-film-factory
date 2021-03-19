@@ -1,20 +1,15 @@
-// SimilarMovies
-import { Link } from 'react-router-dom';
+// SimilarMovies.jsx
+
+import { withRouter } from 'react-router-dom';
 import firebase from './firebase.js';
 import { useState, useEffect } from 'react';
 import getSimilarMovies from './getSimilarMovies';
 import MovieCard from './MovieCard';
 import Filter from './Filter.jsx';
 
-const SimilarMovies = ({
-  searchedMovie,
-  id,
-  recommendedArray,
-  setRecommendedArray,
-}) => {
+const SimilarMovies = ({ history, searchedMovie, id, recommendedArray, setRecommendedArray }) => {
   const [movieSuggestions, setMovieSuggestions] = useState([]);
   const [selectedArray, setSelectedArray] = useState([]);
-  // const [recommendedArray, setRecommendedArray] = useState([]);
   const [loading, setLoading] = useState(false);
   const [availableLanguages, setAvailableLanguages] = useState([]);
   const [filterLang, setFilterLang] = useState('');
@@ -23,15 +18,7 @@ const SimilarMovies = ({
 
   useEffect(() => {
     if (id) {
-      // clear the movie suggestions(array) displayed from previous query.
-      // setMovieSuggestions([]);
-      getSimilarMovies(
-        id,
-        setMovieSuggestions,
-        setLoading,
-        setAvailableLanguages,
-        setAvailableGenres
-      );
+      getSimilarMovies(id, setMovieSuggestions, setLoading, setAvailableLanguages, setAvailableGenres);
       setLoading(true);
     }
   }, [id]);
@@ -83,9 +70,9 @@ const SimilarMovies = ({
       year: searchedMovie.release_date.slice(0, 4),
     };
 
-    console.log(usersMovie, recommendedArray);
-
     const dbRef = firebase.database().ref();
+
+    history.push("/allTimeResults");
 
     recommendedArray.forEach((movie) => {
       dbRef.push({
@@ -100,13 +87,12 @@ const SimilarMovies = ({
       <h2>Foreign Language Films You Might Like</h2>
 
       <div className='saveMoviesRow'>
-
         <div className="saveButtonPanel">
           <h3>Add up to three films to the saved list.</h3>
           {recommendedArray.length ? (
-            <Link to='/allTimeResults'>
-              <button onClick={pushPairToFirebase}>Save</button>
-            </Link>
+
+            <button onClick={pushPairToFirebase}>Save</button>
+
           ) : (
             <button disabled>Save</button>
           )}
@@ -166,4 +152,4 @@ const SimilarMovies = ({
   );
 };
 
-export default SimilarMovies;
+export default withRouter(SimilarMovies);

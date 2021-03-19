@@ -1,6 +1,5 @@
 // _currentResults.scss
 
-// Container storing initial matched movies based on user movie search keywords
 .searchResults{
     h2{
         display: inline-block;
@@ -46,7 +45,6 @@
     .saveMoviesRow{
         display: flex;
         flex-direction: column;
-        // align-items: center;
         margin-left: 16px;
         margin-bottom: 10px;
         button{
@@ -74,7 +72,7 @@
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
-// Also a scrolling container
+// A self-contained scrolling container
 .lowerMovieCardContainer{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -107,7 +105,6 @@
             background-color: $turquoise;
             border: none;
             border-radius: 5px;
-
         }
     }
 }
@@ -134,8 +131,7 @@ select:nth-of-type(1){
         &:nth-child(3){
             background-color: $peach;
             animation: loadingDiv3 0.7s infinite;
-        }
-        
+        }    
     }
 }
 

@@ -1,10 +1,11 @@
+// _mediaQueries.scss
 // media queries
 
 @media(max-width:500px){
-        h1{
-            font-size: 3.5rem;
-            text-align:center;
-        }
+    h1{
+        font-size: 3.5rem;
+        text-align:center;
+    }
 }
 
 @media(max-width:450px) {
@@ -55,5 +56,4 @@
     select:nth-of-type(1){
         margin-right: 0px;
     }
-
 }

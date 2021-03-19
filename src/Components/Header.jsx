@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
 
-
     return (
         <header>
             <div className="wrapper headerProps">
@@ -14,8 +13,8 @@ const Header = () => {
                 </div>
                 <nav>
                     <ul>
-                        <li><NavLink to="/movieSearch" activeClassName="selectedTab" ><h2>current results</h2></NavLink></li>
-                        <li><NavLink to="/allTimeResults" activeClassName="selectedTab"><h2>all-time results</h2></NavLink></li>
+                        <li><NavLink to="/movieSearch"><h2>current results</h2></NavLink></li>
+                        <li><NavLink to="/allTimeResults"><h2>all-time results</h2></NavLink></li>
                     </ul>
                 </nav>
             </div>

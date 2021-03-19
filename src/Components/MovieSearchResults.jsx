@@ -1,9 +1,8 @@
-// getMovieId
+// MovieSearchResults.jsx
 
 import MovieCard from "./MovieCard";
 
 const MovieSearchResults = ({ setSearchedMovie, setRecommendedArray, setShowSuggestedFilms, movieArray }) => {
-
 
   return (
     <>
@@ -12,16 +11,15 @@ const MovieSearchResults = ({ setSearchedMovie, setRecommendedArray, setShowSugg
         {movieArray.length
           ? movieArray.map((movie) => {
             return (
-              <MovieCard key={movie.id} 
-              movie={movie} 
-              setSearchedMovie={setSearchedMovie} 
-              setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} />
+              <MovieCard key={movie.id}
+                movie={movie}
+                setSearchedMovie={setSearchedMovie}
+                setRecommendedArray={setRecommendedArray} setShowSuggestedFilms={setShowSuggestedFilms} />
             );
           })
           : null
         }
       </div>
-
     </>
   );
 };

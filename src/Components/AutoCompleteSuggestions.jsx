@@ -1,3 +1,4 @@
+// AutoCompleteSuggestions.jsx
 // Solution to use arrow keys to move through autocomplete suggestions
 // adapted from 'Roving focus in react with custom hooks' by Rafi
 // https://dev.to/rafi993/roving-focus-in-react-with-custom-hooks-1ln
@@ -5,7 +6,7 @@
 
 import { useCallback, useEffect, useRef } from 'react';
 
-const AutoCompleteSuggestions = ({movie, focus, index, setFocus, setName,}) => {
+const AutoCompleteSuggestions = ({ movie, focus, index, setFocus, setName, }) => {
   const ref = useRef(null);
 
   useEffect(() => {

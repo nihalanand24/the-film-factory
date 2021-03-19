@@ -1,7 +1,9 @@
+// getSearchResults
+
 import axios from 'axios';
 
 const getSearchResults = async (movieName) => {
-    let englishMovies;
+  let englishMovies;
 
   if (movieName) {
 
@@ -15,14 +17,14 @@ const getSearchResults = async (movieName) => {
           query: movieName,
         },
       })
-          const movies = await res.data.results;
-  
-          englishMovies = movies.filter(
-            (movie) => movie.original_language === 'en'
-          );
-  
-          return englishMovies;
-    } catch(error) {
+      const movies = await res.data.results;
+
+      englishMovies = movies.filter(
+        (movie) => movie.original_language === 'en'
+      );
+
+      return englishMovies;
+    } catch (error) {
       alert('No data response received. Please try again later.');
       return 1;
     }

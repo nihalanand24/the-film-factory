@@ -1,3 +1,4 @@
+// AutoComplete.jsx
 // UseRoveFocus adapted from 
 //'Roving focus in react with custom hooks' by Rafi 
 // to allow arrow keys to move through autocomplete suggestions
@@ -7,17 +8,17 @@
 import AutoCompleteSuggestions from './AutoCompleteSuggestions';
 import useRoveFocus from './useRoveFocus';
 
-const AutoComplete = ({suggestions, setSelected}) => {
-    const [focus, setFocus] = useRoveFocus(suggestions.length);
-    
-    return (
-        <ul className='autoComplete'>
-              <li><button className="hiddenButton" aria-hidden></button></li>
-              {suggestions.map((movie, index) => 
-                <AutoCompleteSuggestions key={index} setFocus={setFocus} index={index} focus={focus === index} movie={movie} setName={setSelected}/>
-              )}
-          </ul>
-    )
+const AutoComplete = ({ suggestions, setSelected }) => {
+  const [focus, setFocus] = useRoveFocus(suggestions.length);
+
+  return (
+    <ul className='autoComplete'>
+      <li><button className="hiddenButton" aria-hidden></button></li>
+      {suggestions.map((movie, index) =>
+        <AutoCompleteSuggestions key={index} setFocus={setFocus} index={index} focus={focus === index} movie={movie} setName={setSelected} />
+      )}
+    </ul>
+  )
 }
 
 export default AutoComplete

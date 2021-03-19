@@ -12,4 +12,5 @@ const PubResultsMain = () => {
     </div>
   );
 };
+
 export default PubResultsMain;

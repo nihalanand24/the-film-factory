@@ -1,3 +1,4 @@
+// _index.scss
 // Stores all sass styling for /index 
 
 .welcomeContainer{
@@ -5,10 +6,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 10px;
+
+    h2,
+    h3{
+        width: 90%;
+    }
 
     h2{
         font-size: 2rem;
-        width: 90%;
         transition: 0.7s all ease;
         font-family: 'Josefin Slab', serif;
         font-weight: 500;
@@ -20,7 +26,6 @@
         color:gray;
         font-size:0.9rem;
         margin-top: 10px;
-        width: 90%;
         max-width: 350px;
         text-align: center;
         font-weight: 400;
@@ -34,6 +39,21 @@
         transition: 0.7s ease all;
         div{
             margin-top: 10px;
+        }
+    }
+
+    .otherLanguages{
+        margin-top: 30px;
+        color: gray;
+        font-size: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p{
+            padding: 0 5px;
+            border-radius: 5px;
+            margin-top: 5px;
         }
     }
 

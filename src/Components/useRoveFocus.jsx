@@ -1,3 +1,5 @@
+// useRoveFocus.jsx
+
 // Solution to use arrow keys to move through autocomplete suggestions
 // adapted from 'Roving focus in react with custom hooks' by Rafi 
 // https://dev.to/rafi993/roving-focus-in-react-with-custom-hooks-1ln
@@ -26,10 +28,10 @@ function useRoveFocus(size) {
       } else if (e.keyCode === 38) {
         // Up arrow
         e.preventDefault();
-        if (currentFocus === 0){
+        if (currentFocus === 0) {
           setCurrentFocus(-1);
           search.focus();
-        } else if (document.activeElement === search){
+        } else if (document.activeElement === search) {
           setCurrentFocus(size - 1);
         } else {
           setCurrentFocus(currentFocus - 1);

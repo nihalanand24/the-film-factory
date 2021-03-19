@@ -1,26 +1,27 @@
+// _movieCard.scss
 // movieCard styling
+
+.movieCard, 
+.movieCard img{
+    border-radius: 7px;
+    max-width: 250px;
+}
 
 .movieCard{
     opacity: 0.85;
     display: inline-block;
     margin: 10px;
     background: lightgrey;
-    border-radius: 7px;
-
-    max-width: 250px;
     transition: 0.5s ease all;
     &:hover{
         opacity: 1;
         cursor: pointer;
     }
     img{
+        display: block;
         width: 100%;
-        max-width: 250px;
-
-        border-radius: 7px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
-        display: block;
     }
 }
 
@@ -38,5 +39,9 @@
     min-height: 70px;
     p{
         margin-top: 5px;
+        font-size: 0.9rem;
+    }
+    h3{
+        display: inline;
     }
 }

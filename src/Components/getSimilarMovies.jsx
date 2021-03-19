@@ -1,7 +1,8 @@
+// getSimilarMovies.jsx
+
 import axios from 'axios';
 import languageArray from './languageArray';
 import genresArray from './genresArray';
-
 
 const getSimilarMovies = async (id, setMovieSuggestions, setLoading, setAvailableLanguages, setAvailableGenres) => {
   const similarMovies = [];
@@ -39,8 +40,8 @@ const getSimilarMovies = async (id, setMovieSuggestions, setLoading, setAvailabl
             }
           });
 
-          if (!repeatedMovie) {
-            
+          if (!repeatedMovie && movie.release_date) {
+
             const movieGenresArray = [];
             genres.forEach(genre => {
               if (movie.genre_ids.includes(genre.id)) {
@@ -53,13 +54,14 @@ const getSimilarMovies = async (id, setMovieSuggestions, setLoading, setAvailabl
 
             languages.forEach((language) => {
               if (language.iso_639_1 === movie.original_language) {
+
                 similarMovies.push({
                   ...movie,
                   language: language.english_name,
                   genres: movieGenresArray,
                   year: movie.release_date.slice(0, 4)
                 });
-                if (!langArray.includes(language.english_name)){
+                if (!langArray.includes(language.english_name)) {
                   langArray.push(language.english_name);
                 }
               }
