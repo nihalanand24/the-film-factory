@@ -3,6 +3,7 @@
 // Also loads on page refresh
 import { useState } from 'react';
 import SearchBar from './SearchBar';
+import MultiLangImg from "../assets/multilanguages.png";
 
 const HomeMain = ({ setMovieArray, setSearchedMovieTitle, searchedMovieTitle }) => {
     const [resultsFound, setResultsFound] = useState(true);
@@ -20,11 +21,7 @@ const HomeMain = ({ setMovieArray, setSearchedMovieTitle, searchedMovieTitle }) 
                 }
 
                 <div className="otherLanguages">
-                    <p>imuvi ταινία 映画 kvikmynd فيلم película</p>
-                    <p>bộ phim திரைப்படம் সিনেমা elokuva</p>
-                    <p>фильм चलचित्र kiʻi ʻoniʻoni ਫਿਲਮ ภาพยนตร์ </p>
-                    <p>kiriata 영화 Fliek મૂવી ibhayisikobho ရုပ်ရှင်</p>
-                    <p>կինոնկար 電影 סרט فیلم سینما ihe nkiri فيلم</p>
+                    <img src={MultiLangImg} alt="the word movie in multiple languages"></img>
                 </div>
 
             </div>
