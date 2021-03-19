@@ -9,14 +9,22 @@
 
 .movieCard{
     opacity: 0.85;
+    border: none;
+    font-family: inherit;
     display: inline-block;
     margin: 10px;
     background: lightgrey;
     transition: 0.5s ease all;
-    &:hover{
+    &:hover, 
+    &:focus{
         opacity: 1;
         cursor: pointer;
+        outline: none;
     }
+    // &:focus{
+    //     outline: none;
+    //     border: 5px solid $peach;
+    // }
     img{
         display: block;
         width: 100%;
